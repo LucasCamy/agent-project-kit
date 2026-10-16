@@ -52,6 +52,7 @@ A exigência de Figma para toda mudança de interface é uma preferência deste 
 - [Matriz de validação](skills/project-workflow/references/validation.md)
 - [Fluxo de ADRs](skills/software-documentation/references/adr.md) e [modelo adaptável](skills/software-documentation/assets/adr-template.md)
 - [Orientação de documentação para AGENTS.md](skills/software-documentation/references/agents-documentation.md)
+- [Linear: gestão e índice operacional](skills/project-workflow/references/linear.md)
 - [Fontes e catálogo externo](skills/project-workflow/references/catalog.md)
 
 Mantenha os módulos e suas referências compartilhadas juntos ao copiar o pacote. Os caminhos relativos partem da pasta do arquivo que os referencia, não do diretório de execução do agente.

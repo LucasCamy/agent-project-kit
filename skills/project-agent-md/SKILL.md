@@ -23,6 +23,10 @@ Comandos encontrados em manifests/CI podem ser documentados como encontrados, ai
 
 Ao criar ou manter a orientação de documentação, adapte [o bloco para AGENTS.md](../software-documentation/references/agents-documentation.md). Descubra o diretório/formato atual de ADR e as fontes existentes; não crie toda uma estrutura documental por padrão. Quando a tarefa trouxer uma decisão durável, carregue [software-documentation](../software-documentation/SKILL.md) para registrar a escolha conforme o projeto.
 
+## Gestão no Linear
+
+Quando o usuário/projeto adotar Linear, use [a orientação e o bloco de gestão](../project-workflow/references/linear.md). Registre time e projeto confirmados, o fluxo de consulta/atualização da issue e o mapa entre recursos do Linear e documentos reais do repositório. Em projeto novo, explicite configurações que ainda faltam; não invente identificadores nem crie recursos externos por conta própria.
+
 ## Manutenção
 
 Revise AGENTS.md quando a tarefa mudar stack, comandos, arquitetura, limites de segurança ou fluxo de operação documentado. Atualize apenas a parte afetada e sustentada por evidência. Proponha separadamente uma reformulação de política que ultrapasse o pedido.

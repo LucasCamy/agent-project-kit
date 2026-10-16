@@ -15,3 +15,5 @@ Use caminhos e comandos reais. Declare se um comando foi encontrado nos arquivos
 ```
 
 Use apenas fontes que existirem ou forem necessárias ao projeto. Em API sem OpenAPI, não afirme que existe um arquivo; em projeto com outro padrão de ADR, adapte o trecho. Preserve a política de aprovação e as instruções existentes; não marque decisões como Aceitas sem evidência nem solicite autorização já concedida.
+
+Se o projeto adotar Linear, complemente o mapa com [o bloco de gestão e índice operacional](../../project-workflow/references/linear.md). Use recursos do Linear para apontar às fontes detalhadas no repositório; não duplique a mesma documentação em cada issue.

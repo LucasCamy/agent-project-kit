@@ -4,7 +4,7 @@ Esta é a fonte comum de escopo, autorização, evidências e conclusão. Leia j
 
 ## Projeto e escopo
 
-Leia AGENTS.md e instruções locais aplicáveis antes de editar. Preserve arquitetura, versões, contratos e trabalho existente fora do escopo. Use o tracker adotado pelo projeto se configurado; confirme issue, critérios e dependências quando o fluxo local exigir. Não invente time, projeto ou regras de domínio. Documentos históricos precisam ser conferidos contra o código atual.
+Leia AGENTS.md e instruções locais aplicáveis antes de editar. Preserve arquitetura, versões, contratos e trabalho existente fora do escopo. Use o tracker adotado pelo projeto se configurado; confirme issue, critérios e dependências quando o fluxo local exigir. Para Linear, consulte [a referência de gestão e documentação](linear.md). Não invente time, projeto ou regras de domínio. Documentos históricos precisam ser conferidos contra o código atual.
 
 Para registrar ou substituir decisões duráveis de arquitetura, integração, dados, segurança ou semântica, use [o fluxo de ADRs](../../software-documentation/references/adr.md), respeitando o padrão do projeto. Em domínios auditáveis, preserve histórico e confirme se cancelamento/reversão é exigido em vez de sobrescrita.
 

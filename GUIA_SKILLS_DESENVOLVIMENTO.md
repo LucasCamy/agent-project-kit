@@ -50,3 +50,7 @@ O [catálogo externo](skills/project-workflow/references/catalog.md) preserva fo
 O módulo software-documentation inclui [fluxo de decisões](skills/software-documentation/references/adr.md), [modelo de ADR](skills/software-documentation/assets/adr-template.md) e [orientação para o AGENTS.md](skills/software-documentation/references/agents-documentation.md). As convenções locais têm precedência; o kit propõe docs/adr e numeração sequencial apenas quando não houver padrão.
 
 As ADRs registram motivos e consequências de escolhas duráveis. README, OpenAPI e runbooks continuam sendo atualizados conforme a mudança. Aceitar uma decisão não comprova que ela foi implementada ou implantada.
+
+## Gestão no Linear
+
+Quando adotado pelo projeto, o Linear organiza backlog, prioridades e acompanhamento e funciona como índice operacional para documentos do repositório. O [fluxo e bloco adaptável de AGENTS.md](skills/project-workflow/references/linear.md) orientam consulta da issue antes da implementação e registro do resultado com evidências e links ao concluir. Time e projeto precisam ser confirmados; nenhuma configuração específica de outro repositório é copiada automaticamente.
