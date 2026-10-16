@@ -19,6 +19,10 @@ Escreva uma versão curta com seções aplicáveis: propósito e stack; organiza
 
 Comandos encontrados em manifests/CI podem ser documentados como encontrados, ainda não executados. Use verificado por execução somente com evidência real. Não é necessário executar toda a suíte só para escrever AGENTS.md. Caminhos devem ser relativos ao projeto; referências devem funcionar em outra máquina, sem depender de F:/Skills.
 
+## Documentação e ADRs
+
+Ao criar ou manter a orientação de documentação, adapte [o bloco para AGENTS.md](../software-documentation/references/agents-documentation.md). Descubra o diretório/formato atual de ADR e as fontes existentes; não crie toda uma estrutura documental por padrão. Quando a tarefa trouxer uma decisão durável, carregue [software-documentation](../software-documentation/SKILL.md) para registrar a escolha conforme o projeto.
+
 ## Manutenção
 
 Revise AGENTS.md quando a tarefa mudar stack, comandos, arquitetura, limites de segurança ou fluxo de operação documentado. Atualize apenas a parte afetada e sustentada por evidência. Proponha separadamente uma reformulação de política que ultrapasse o pedido.

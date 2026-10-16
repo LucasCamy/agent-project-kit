@@ -14,6 +14,7 @@ Selecione linhas pertinentes ao escopo, critérios de aceitação e instruções
 | Integração externa | Sucesso, falha, timeout, cancelamento e segurança de retries pertinentes; preferir ambientes e dados controlados |
 | Interface | Comparação com Figma, fluxo, larguras pertinentes, teclado/foco, estados e reduced motion; screenshots com conteúdo estabilizado |
 | Documentação | Compatibilidade com código, comandos e caminhos existentes; diferenciar instruções conferidas de execução real |
+| ADR | Convenção local, identificador único, status sustentado por evidência, contexto/decisão/alternativas/consequências; links de substituição coerentes; distinguir aceitação de implementação |
 | CI/infra | Sintaxe/configuração, permissões e impacto operacional; conferir sem provocar deploy ou publicação não autorizados |
 
 Verifique critérios funcionais além de build, lint e types. Um comando verde não prova autorização correta, semântica de negócio ou equivalência visual. Quando a validação falhar, investigue a causa; repita ou amplie verificações só quando houver correção, falha ou dúvida relevante.

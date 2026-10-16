@@ -50,6 +50,8 @@ A exigência de Figma para toda mudança de interface é uma preferência deste 
 - [Guia completo de uso](GUIA_SKILLS_DESENVOLVIMENTO.md)
 - [Regras comuns](skills/project-workflow/references/common.md)
 - [Matriz de validação](skills/project-workflow/references/validation.md)
+- [Fluxo de ADRs](skills/software-documentation/references/adr.md) e [modelo adaptável](skills/software-documentation/assets/adr-template.md)
+- [Orientação de documentação para AGENTS.md](skills/software-documentation/references/agents-documentation.md)
 - [Fontes e catálogo externo](skills/project-workflow/references/catalog.md)
 
 Mantenha os módulos e suas referências compartilhadas juntos ao copiar o pacote. Os caminhos relativos partem da pasta do arquivo que os referencia, não do diretório de execução do agente.
@@ -57,3 +59,14 @@ Mantenha os módulos e suas referências compartilhadas juntos ao copiar o pacot
 ## Manutenção
 
 Atualize as orientações com base no uso real. Registre comandos encontrados separadamente dos efetivamente executados, preserve instruções locais e mantenha histórico temporário em issues ou PRs. Skills externas e ferramentas citadas têm seus próprios requisitos; o catálogo não as instala automaticamente.
+
+## Pedir documentação e ADRs
+
+Depois de indicar o caminho do kit ao agente, você pode pedir:
+
+```text
+Use software-documentation para analisar a mudança e atualizar os documentos afetados.
+Consulte as ADRs existentes. Se a tarefa estabelecer uma decisão durável, registre-a
+com contexto, decisão, alternativas e consequências, seguindo o padrão do projeto.
+Preserve o histórico e diferencie proposta, decisão aceita e implementação.
+```

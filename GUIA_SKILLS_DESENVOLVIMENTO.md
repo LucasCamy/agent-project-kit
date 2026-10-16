@@ -44,3 +44,9 @@ Exemplo no computador do autor: `F:/Skills/skills/project-workflow/SKILL.md`. Su
 Mantenha instruções estáveis no AGENTS.md do próprio projeto. Atualize-o quando stack, comandos, limites arquiteturais ou operação mudarem; histórico de tarefas e resultados ficam em issues, PRs ou relatórios. Evite inserir caminhos locais deste pacote nos AGENTS.md de projetos que precisam funcionar em outras máquinas.
 
 O [catálogo externo](skills/project-workflow/references/catalog.md) preserva fontes, comandos informados e status da conferência. O pacote não instala ferramentas, conecta MCPs ou cria agendamentos sozinho.
+
+## Documentação e ADRs
+
+O módulo software-documentation inclui [fluxo de decisões](skills/software-documentation/references/adr.md), [modelo de ADR](skills/software-documentation/assets/adr-template.md) e [orientação para o AGENTS.md](skills/software-documentation/references/agents-documentation.md). As convenções locais têm precedência; o kit propõe docs/adr e numeração sequencial apenas quando não houver padrão.
+
+As ADRs registram motivos e consequências de escolhas duráveis. README, OpenAPI e runbooks continuam sendo atualizados conforme a mudança. Aceitar uma decisão não comprova que ela foi implementada ou implantada.
