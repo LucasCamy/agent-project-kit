@@ -1,65 +1,152 @@
-# Guia de skills para projetos de software
+# Guia de uso do Agent Project Kit
 
-Este pacote organiza o início do projeto, instruções persistentes e módulos especializados. O ponto de entrada é `skills/project-workflow/SKILL.md`. As regras do repositório e o pedido do usuário orientam a tarefa.
+Comece pelo [README](README.md) para baixar o kit e enviar o primeiro pedido. Este guia explica como aplicá-lo às tarefas, lidar com ferramentas indisponíveis e personalizar o fluxo. As regras detalhadas continuam nos módulos e referências vinculados.
 
-## Como usar agora
+## Kit, projeto e instruções
 
-No agente que estiver aberto no projeto, envie:
+| Arquivo ou pasta | Função |
+|---|---|
+| README deste kit | Apresentar o conteúdo e ensinar a começar |
+| skills/project-workflow/SKILL.md | Orientar a execução e escolher módulos |
+| AGENTS.md da aplicação | Guardar convenções e instruções persistentes daquele projeto |
+| Referências dos módulos | Detalhar procedimentos quando a tarefa exigir |
+
+O AGENTS.md da raiz deste repositório orienta a manutenção do próprio kit. Não o copie para sua aplicação: `project-agent-md` deve produzir instruções específicas a partir do briefing, dos arquivos e das escolhas reais do projeto.
+
+Guarde o clone em um local que o agente consiga ler. Os módulos fazem referências uns aos outros; mantenha a estrutura de pastas. Referências relativas partem do arquivo que as contém, não da pasta atual do terminal. Abrir apenas a página do GitHub ou copiar um SKILL.md isolado não disponibiliza automaticamente os arquivos auxiliares ao agente.
+
+## Primeiro pedido e continuação
+
+Na primeira tarefa da sessão, indique o caminho da entrada, o projeto e o objetivo:
 
 ```text
-Leia [caminho absoluto do clone]/skills/project-workflow/SKILL.md e use esse fluxo para esta tarefa.
-Projeto: [caminho do projeto]
+Leia [caminho absoluto do kit]/skills/project-workflow/SKILL.md
+e use esse fluxo no projeto [caminho absoluto do projeto].
 Objetivo: [resultado esperado]
-Critérios de aceitação: [o que precisa funcionar]
+Critérios de aceitação: [como reconhecer o resultado correto]
+Restrições: [o que deve ser preservado]
 ```
 
-Exemplo no computador do autor: `F:/Skills/skills/project-workflow/SKILL.md`. Substitua pelo caminho do seu clone. O caminho absoluto serve para localizar a entrada. As referências seguintes são resolvidas a partir da pasta de cada SKILL.md, nunca do diretório atual do terminal. Este uso pressupõe que o agente pode ler arquivos locais. Apenas salvar o pacote nesta pasta não o registra automaticamente no catálogo de um agente. A instalação depende do agente e do escopo desejado; este pacote não alterou configurações globais.
+Informe também stack escolhida, links de design ou issue quando existirem. Você não precisa preencher tudo para o agente começar a inspeção; ele deve perguntar apenas pelas decisões ausentes que mudarem materialmente o trabalho.
 
-## Módulos
+Na mesma sessão, continue com pedidos objetivos. Em outra sessão, aponte novamente para a entrada, a menos que já tenha configurado uma forma de descoberta no seu agente. Este pacote não implementa essa instalação por você.
 
-| Módulo | Quando carregar |
+## O que esperar da execução
+
+1. Inspeção das instruções, estrutura e convenções do projeto.
+2. Criação de AGENTS.md ausente antes de implementar, conforme a preferência do kit; preservação de instruções válidas existentes.
+3. Escolha dos módulos relevantes e implementação dentro do escopo.
+4. Verificações proporcionais pela [matriz](skills/project-workflow/references/validation.md).
+5. Relato dos arquivos e comportamentos alterados, evidências reais e pendências.
+
+Um projeto vazio, um scaffold e uma aplicação em produção têm contextos diferentes. O kit orienta o agente a reconhecer essa diferença. Um build aprovado não prova autorização correta, integração completa ou equivalência visual.
+
+## Pedidos prontos por situação
+
+Os exemplos abaixo pressupõem que você já enviou a entrada do kit. Substitua os campos entre colchetes e mantenha apenas as instruções pertinentes.
+
+### Interface e Figma
+
+```text
+Ajuste [tela/componente] para [objetivo de UX].
+Use o arquivo Figma [link] e preserve [marca, conteúdo e integrações].
+Estruture os frames/estados afetados antes de implementar.
+Confira o fluxo, teclado, responsividade e estados com Playwright,
+capture screenshots e compare a implementação com o design.
+```
+
+Figma é requisito de interface deste kit. Se faltar arquivo/destino ou acesso, o agente precisa dessa informação ou de autorização para alternativa. Para back-end ou documentação sem mudança visual, não se exige frame. O [módulo de front-end](skills/frontend-figma-playwright/SKILL.md) descreve o procedimento.
+
+### Back-end .NET e banco
+
+```text
+Implemente [caso de uso/endpoint] seguindo a arquitetura existente.
+Critérios: [entradas, saída, validação e autorização esperadas].
+Avalie persistência, isolamento e concorrência afetados.
+Se precisar de migration, gere e revise as operações e o SQL;
+a aplicação em ambiente compartilhado não faz parte deste pedido.
+Atualize o contrato/documentação pertinente e valide o comportamento.
+```
+
+O [módulo .NET](skills/backend-dotnet/SKILL.md) e o de [persistência](skills/database-persistence/SKILL.md) preservam a organização real da solução. Criar migration, revisar SQL e aplicar são operações diferentes.
+
+### Documentação e ADRs
+
+```text
+Use software-documentation para atualizar os documentos desta mudança.
+Consulte decisões anteriores. Se houver uma nova decisão durável,
+registre uma ADR seguindo o padrão do projeto, com contexto, decisão,
+alternativas realmente consideradas e consequências.
+Diferencie proposta, decisão aceita, implementação e implantação.
+```
+
+Veja [quando registrar uma ADR](skills/software-documentation/references/adr.md) e [o modelo adaptável](skills/software-documentation/assets/adr-template.md). Não é necessário criar ADR para cada correção ou documentar alternativas fictícias.
+
+### Gestão no Linear
+
+```text
+Use o time [time] e o projeto [nome/link confirmado] do Linear.
+Consulte a issue [identificador] antes de implementar e confira critérios,
+dependências e impacto em segurança e dados.
+Ao concluir, atualize essa issue com resultado, validações reais,
+riscos/pendências e links de commit, PR, ADR ou runbook pertinentes.
+Respeite o fluxo de status do time e os critérios ainda pendentes.
+```
+
+Este exemplo inclui o pedido de atualizar a issue indicada. Apenas consultar um ticket não autoriza outras alterações no sistema. Se o acesso não estiver disponível, o agente deve declarar a limitação e preparar o resumo para registro. A [referência Linear](skills/project-workflow/references/linear.md) explica o índice operacional e o mapa de documentação.
+
+### Auditoria de segurança
+
+```text
+Avalie a opção Cloudflare security-audit para auditar [repositório/escopo].
+Leia os requisitos da skill e confira a disponibilidade das ferramentas
+e do isolamento antes de executar código do alvo.
+Informe o modo e os limites da análise e registre o que precisar
+de validação adicional, sem declarar confirmação sem evidência.
+```
+
+A [opção de auditoria](skills/project-workflow/references/security-audit.md) tem exigências próprias. O kit não a instala nem inicia auditoria em toda alteração de código. Se a execução não puder cumprir os requisitos, a limitação precisa constar no resultado.
+
+### Ilustração explicativa com Anatomy
+
+```text
+Avalie Anatomy para explicar [conceito do produto] com uma figura interativa.
+Destino: [landing page, documentação ou componente].
+Dados e comportamento: [informações reais que a figura deve representar].
+Formato/tema: [formato desejado e linguagem visual do projeto].
+Se a figura integrar a UI, siga Figma e confira a integração no navegador.
+```
+
+Use [Anatomy](skills/frontend-figma-playwright/references/anatomy.md) quando a metáfora visual ajudar o conteúdo. Sua geração é especializada; uma figura não precisa acompanhar toda tela ou documento.
+
+## Ferramentas, acesso e instalações
+
+Os módulos internos são instruções em Markdown. A execução depende do que o agente e o projeto oferecem. Nem todo pedido precisa de Node.js, .NET, navegador, Figma e Linear ao mesmo tempo.
+
+Use [skill-discovery](skills/skill-discovery/SKILL.md) se quiser encontrar uma capacidade adicional. O [catálogo externo](skills/project-workflow/references/catalog.md) contém fontes e comandos com o status da conferência. Pedido de busca não equivale a pedido de instalação; quando você autorizar instalar, indique escopo do projeto ou do usuário quando relevante.
+
+Publicação, deploy, exclusão de dados e aplicação de migrations compartilhadas dependem da autorização correspondente, respeitando o que já foi concedido. As [regras comuns](skills/project-workflow/references/common.md) centralizam esses limites.
+
+## Quando algo não funcionar
+
+| Situação | Como encaminhar |
 |---|---|
-| [project-workflow](skills/project-workflow/SKILL.md) | Entrada: inspecionar projeto, escolher módulos e integrar resultado |
-| [project-agent-md](skills/project-agent-md/SKILL.md) | Criar AGENTS.md ausente ou manter orientações desatualizadas |
-| [frontend-figma-playwright](skills/frontend-figma-playwright/SKILL.md) | Mudança de interface: Figma, implementação e conferência visual |
-| [backend-dotnet](skills/backend-dotnet/SKILL.md) | API, serviços e regras C#/.NET |
-| [database-persistence](skills/database-persistence/SKILL.md) | Consulta, schema, concorrência ou migration |
-| [software-documentation](skills/software-documentation/SKILL.md) | README, OpenAPI, ADR e runbook |
-| [agent-coordination](skills/agent-coordination/SKILL.md) | Trabalho amplo que ganha com responsabilidades separadas |
-| [skill-discovery](skills/skill-discovery/SKILL.md) | Lacuna de capacidade ou pedido para encontrar skills |
+| Agente não encontra o kit | Confira o caminho absoluto e o acesso ao disco/pasta no ambiente em uso |
+| Referência local não encontrada | Mantenha o clone completo e a estrutura entre módulos; resolva o link pela pasta do documento |
+| Skill não aparece no catálogo do agente | Clonar não a registra automaticamente; use a leitura explícita da entrada ou configure a instalação compatível |
+| Figma ou Linear sem acesso | Forneça destino/identificadores e acesso necessários ou autorize alternativa para a etapa bloqueada |
+| Playwright ou comando da stack indisponível | Peça que o agente registre a limitação e proponha a verificação viável; não aceite evidência de execução presumida |
+| Projeto sem stack ou comandos | Informe escolhas já feitas; registre o que ainda não existe e deixe o agente inspecionar/propor o necessário |
+| Resultado incompleto | Compare com os critérios e a matriz; trate a pendência sem marcar o fluxo inteiro como verificado |
 
-[Regras comuns](skills/project-workflow/references/common.md) centralizam escopo, autorização, evidências e conclusão. A [matriz de validação](skills/project-workflow/references/validation.md) detalha verificações por mudança. Não carregue o pacote inteiro em tarefas pequenas. Preserve a estrutura de pastas ao copiar ou instalar: os módulos especializados compartilham as referências de project-workflow. Instalar um módulo isolado exige levar também essas referências e ajustar os caminhos.
+## Personalizar e atualizar
 
-## Decisões do pacote
+Mantenha regras específicas da aplicação em seu próprio AGENTS.md. Adapte preferências de UI, tracker e ferramentas explicitamente; preserve a distinção entre instrução persistente e histórico de tarefas. Evite caminhos pessoais do clone em instruções que devam funcionar em outra máquina.
 
-- Criar AGENTS.md ausente ao iniciar implementação, conforme a preferência do usuário; preservar instruções existentes e não criá-lo em consultas somente de leitura.
-- Adaptar o projeto novo ao briefing; em projeto existente, descobrir e respeitar suas convenções.
-- Toda alteração de interface deve ser estruturada no Figma antes do código. Isso inclui pequenos ajustes e estados. A extensão do frame acompanha o escopo; não exige redesenhar a página inteira.
-- Verificar resultado no navegador com Playwright, incluindo screenshots e comparação com o Figma.
-- Usar coordenação adicional somente quando ajudar; um único agente pode cumprir os papéis em tarefas pequenas.
-- Instalar skills externas apenas dentro do escopo autorizado, sem repetir uma confirmação já concedida.
+Para atualizar o kit, dentro da pasta do clone:
 
-## Manutenção
+```bash
+git pull --ff-only
+```
 
-Mantenha instruções estáveis no AGENTS.md do próprio projeto. Atualize-o quando stack, comandos, limites arquiteturais ou operação mudarem; histórico de tarefas e resultados ficam em issues, PRs ou relatórios. Evite inserir caminhos locais deste pacote nos AGENTS.md de projetos que precisam funcionar em outras máquinas.
-
-O [catálogo externo](skills/project-workflow/references/catalog.md) preserva fontes, comandos informados e status da conferência. O pacote não instala ferramentas, conecta MCPs ou cria agendamentos sozinho.
-
-## Documentação e ADRs
-
-O módulo software-documentation inclui [fluxo de decisões](skills/software-documentation/references/adr.md), [modelo de ADR](skills/software-documentation/assets/adr-template.md) e [orientação para o AGENTS.md](skills/software-documentation/references/agents-documentation.md). As convenções locais têm precedência; o kit propõe docs/adr e numeração sequencial apenas quando não houver padrão.
-
-As ADRs registram motivos e consequências de escolhas duráveis. README, OpenAPI e runbooks continuam sendo atualizados conforme a mudança. Aceitar uma decisão não comprova que ela foi implementada ou implantada.
-
-## Gestão no Linear
-
-Quando adotado pelo projeto, o Linear organiza backlog, prioridades e acompanhamento e funciona como índice operacional para documentos do repositório. O [fluxo e bloco adaptável de AGENTS.md](skills/project-workflow/references/linear.md) orientam consulta da issue antes da implementação e registro do resultado com evidências e links ao concluir. Time e projeto precisam ser confirmados; nenhuma configuração específica de outro repositório é copiada automaticamente.
-
-## Opções externas adicionais
-
-| Opção | Quando usar |
-|---|---|
-| [Cloudflare security-audit](skills/project-workflow/references/security-audit.md) | Auditoria explícita ou investigação de vulnerabilidade, observando requisitos de validação e isolamento |
-| [Anatomy](skills/frontend-figma-playwright/references/anatomy.md) | Ilustração isométrica explicativa para produto, documentação ou landing page |
-
-São opções de uso conforme a tarefa. Os oito módulos internos continuam sendo o núcleo do kit. Registrar uma opção no catálogo não instala ferramentas nem executa auditorias ou gera figuras.
+Se houver adaptações locais ou histórico divergente, preserve e revise as diferenças; não descarte alterações para forçar a atualização. Ao distribuir módulos separadamente, leve suas referências compartilhadas e ajuste os caminhos. Melhorias no kit devem ser baseadas no uso observado, mantendo módulos focados e evitando carregar todos em qualquer tarefa.
