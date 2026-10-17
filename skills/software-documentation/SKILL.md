@@ -29,3 +29,5 @@ Uma mudança pode afetar mais de uma fonte. A ADR explica a escolha; o contrato 
 6. Confira a [matriz de validação](../project-workflow/references/validation.md). Relate documentos alterados, ADRs criadas/substituídas e pendências reais. Não execute exemplos com impacto externo sem a autorização correspondente.
 
 Carregue referências de ADR e AGENTS.md apenas quando esses documentos fizerem parte da tarefa. Não exija aprovação adicional só para preparar documentação local; aprovação de uma decisão segue o processo do projeto e as autorizações já concedidas.
+
+Se o pedido incluir figura técnica explicativa, considere [Anatomy](../frontend-figma-playwright/references/anatomy.md) quando seu estilo ajudar o conteúdo. Ela não é necessária para ADRs, README ou runbooks textuais.

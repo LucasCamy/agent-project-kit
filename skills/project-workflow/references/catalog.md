@@ -1,6 +1,6 @@
 # Catálogo externo e origem
 
-Referências discutidas com o usuário em 16/10/2026. O pacote não executou instalações. Reconfirme versões, comandos e compatibilidade antes de instalar.
+Referências discutidas com o usuário em 16/10/2026, com adições conferidas em 17/10/2026. As datas individuais abaixo não implicam reconferência das fontes anteriores. O pacote não executou instalações. Reconfirme versões, comandos e compatibilidade antes de instalar.
 
 | Fonte | Papel | Conferência registrada nesta conversa |
 |---|---|---|
@@ -14,6 +14,8 @@ Referências discutidas com o usuário em 16/10/2026. O pacote não executou ins
 | https://github.com/vercel-labs/skills | Origem indicada da find-skills | Link indicado pelo diretório; conferir na origem antes de instalar |
 | https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Figma-MCP-server | Figma MCP | Guia consultado; acesso depende do ambiente/permissões |
 | https://famous-mandarin-287.notion.site/Model-Routing-Playbook-3f01be55d9b881fbb5d5f0a20f30b265 | Roteamento por esforço/risco | Página consultada; números econômicos não auditados nem incorporados como garantia |
+| https://github.com/cloudflare/security-audit-skill | Auditoria de segurança e validação independente | README/SKILL.md consultados em 17/10/2026; comando conferido; não instalada |
+| https://github.com/wheresryan22/anatomy | Ilustrações isométricas explicativas | README/SKILL.md consultados em 17/10/2026; comando por projeto conferido; não instalada |
 
 ## Comandos recebidos ou conferidos
 
@@ -40,3 +42,12 @@ Comandos de .NET informados para Claude Code, não verificados externamente:
 ```
 
 Comandos do Claude Code não implicam compatibilidade com outro agente. Consulte a documentação atual da plataforma antes de instalar. Não há dependência obrigatória entre carregar as instruções deste pacote e instalar todas essas ferramentas.
+
+## Novas opções conferidas em 17/10/2026
+
+Consulte [Cloudflare security-audit](security-audit.md) para escopo e requisitos de execução e [Anatomy](../../frontend-figma-playwright/references/anatomy.md) para uso visual. Comandos conferidos nos READMEs, não executados:
+
+```bash
+npx skills add https://github.com/cloudflare/security-audit-skill --skill security-audit
+npx skills add wheresryan22/anatomy
+```

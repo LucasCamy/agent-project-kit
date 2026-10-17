@@ -71,3 +71,12 @@ Consulte as ADRs existentes. Se a tarefa estabelecer uma decisão durável, regi
 com contexto, decisão, alternativas e consequências, seguindo o padrão do projeto.
 Preserve o histórico e diferencie proposta, decisão aceita e implementação.
 ```
+
+## Opções externas adicionais
+
+| Opção | Quando usar |
+|---|---|
+| [Cloudflare security-audit](skills/project-workflow/references/security-audit.md) | Auditoria explícita ou investigação de vulnerabilidade, observando requisitos de validação e isolamento |
+| [Anatomy](skills/frontend-figma-playwright/references/anatomy.md) | Ilustração isométrica explicativa para produto, documentação ou landing page |
+
+São opções de uso conforme a tarefa. Os oito módulos internos continuam sendo o núcleo do kit. Registrar uma opção no catálogo não instala ferramentas nem executa auditorias ou gera figuras.

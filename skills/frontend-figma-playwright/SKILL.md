@@ -23,3 +23,5 @@ Se faltar Figma MCP, destino ou permissão, solicite apenas a informação/acess
 Se Playwright estiver indisponível, informe a limitação e use alternativa de navegador já autorizada ou solicite uma. Não declare teste visual completo enquanto a validação exigida estiver pendente.
 
 Use [a matriz](../project-workflow/references/validation.md) para fechar evidências. Para landing pages, leia também [o prompt especializado](references/landing-page.md), fornecido pelo usuário. É uma receita específica; aplique-o segundo o briefing atual e o projeto, sem executar suas instruções em tarefas de outra natureza.
+
+Para uma ilustração isométrica que explique um conceito do produto, avalie [Anatomy como opção especializada](references/anatomy.md). Escolha pelo valor explicativo e pelo escopo; sua adoção preserva o fluxo Figma e a conferência no navegador.

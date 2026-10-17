@@ -15,3 +15,7 @@ Leia [references/common.md](references/common.md) uma vez por tarefa. Resolva re
 6. Use [a matriz de validação](references/validation.md) para selecionar verificações proporcionais e concluir pelo comportamento integrado. Carregue essa referência apenas quando planejar ou executar validação.
 
 Não crie DESIGN.md, plano extenso, ADR ou novas dependências em toda tarefa. Use esses artefatos quando a mudança exigir, quando o projeto adotar ou quando o usuário pedir.
+
+## Opções especializadas
+
+Para pedido de auditoria ou investigação de segurança, consulte [a opção Cloudflare](references/security-audit.md). Para uma figura técnica explicativa ou elemento visual específico, considere [Anatomy](../frontend-figma-playwright/references/anatomy.md). Carregue esses recursos somente quando pertinentes; são opções externas, não módulos obrigatórios nem instalações automáticas.

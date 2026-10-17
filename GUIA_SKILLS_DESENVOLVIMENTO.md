@@ -54,3 +54,12 @@ As ADRs registram motivos e consequências de escolhas duráveis. README, OpenAP
 ## Gestão no Linear
 
 Quando adotado pelo projeto, o Linear organiza backlog, prioridades e acompanhamento e funciona como índice operacional para documentos do repositório. O [fluxo e bloco adaptável de AGENTS.md](skills/project-workflow/references/linear.md) orientam consulta da issue antes da implementação e registro do resultado com evidências e links ao concluir. Time e projeto precisam ser confirmados; nenhuma configuração específica de outro repositório é copiada automaticamente.
+
+## Opções externas adicionais
+
+| Opção | Quando usar |
+|---|---|
+| [Cloudflare security-audit](skills/project-workflow/references/security-audit.md) | Auditoria explícita ou investigação de vulnerabilidade, observando requisitos de validação e isolamento |
+| [Anatomy](skills/frontend-figma-playwright/references/anatomy.md) | Ilustração isométrica explicativa para produto, documentação ou landing page |
+
+São opções de uso conforme a tarefa. Os oito módulos internos continuam sendo o núcleo do kit. Registrar uma opção no catálogo não instala ferramentas nem executa auditorias ou gera figuras.
