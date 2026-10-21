@@ -18,4 +18,4 @@ Não crie DESIGN.md, plano extenso, ADR ou novas dependências em toda tarefa. U
 
 ## Opções especializadas
 
-Para pedido de auditoria ou investigação de segurança, consulte [a opção Cloudflare](references/security-audit.md). Para uma figura técnica explicativa ou elemento visual específico, considere [Anatomy](../frontend-figma-playwright/references/anatomy.md). Carregue esses recursos somente quando pertinentes; são opções externas, não módulos obrigatórios nem instalações automáticas.
+Para pedido de auditoria ou investigação de segurança, consulte [a opção Cloudflare](references/security-audit.md). Para uma figura técnica explicativa ou elemento visual específico, considere [Anatomy](../frontend-figma-playwright/references/anatomy.md). Para revisar um site antes de publicá-lo (dados pessoais, cookies, páginas legais, consumidor, imagens e licenças), use [a referência de conformidade legal](references/conformidade-legal.md). Carregue esses recursos somente quando pertinentes; não são módulos obrigatórios nem instalações automáticas.
