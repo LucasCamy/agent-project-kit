@@ -54,7 +54,7 @@ O agente deve inspecionar o projeto, seguir as instruções locais, selecionar o
 | [agent-coordination](skills/agent-coordination/SKILL.md) | Dividir responsabilidades, revisar e fazer handoff quando útil |
 | [skill-discovery](skills/skill-discovery/SKILL.md) | Encontrar e avaliar skills externas para necessidades específicas |
 
-Há ainda [regras comuns](skills/project-workflow/references/common.md), uma [matriz de validação](skills/project-workflow/references/validation.md), [modelo e fluxo de ADR](skills/software-documentation/references/adr.md), [orientação de Linear](skills/project-workflow/references/linear.md) e [prompt especializado de landing page](skills/frontend-figma-playwright/references/landing-page.md).
+Há ainda [regras comuns](skills/project-workflow/references/common.md), uma [matriz de validação](skills/project-workflow/references/validation.md), [modelo e fluxo de ADR](skills/software-documentation/references/adr.md), [orientação de Linear](skills/project-workflow/references/linear.md), [prompt especializado de landing page](skills/frontend-figma-playwright/references/landing-page.md) e [referência de animação ligada ao scroll](skills/frontend-figma-playwright/references/scroll-motion.md) (GSAP, ScrollTrigger e Lenis).
 
 ## Exemplos de pedido
 
