@@ -102,6 +102,8 @@ O kit preserva a arquitetura de projetos existentes. O módulo .NET só é perti
 
 Taste, Impeccable, UI UX Pro Max, Emil Kowalski e outras referências estão no [catálogo externo](skills/project-workflow/references/catalog.md), com comandos e status da conferência. São recursos opcionais conforme a tarefa, não instalações automáticas do kit.
 
+Para revisar um site antes de publicar no Brasil (LGPD, cookies, páginas legais, consumidor, imagens e licenças), use a [referência de conformidade legal](skills/project-workflow/references/conformidade-legal.md). Ela gera diagnóstico, minutas e um checklist para revisão de advogado; não é parecer jurídico.
+
 ## Consultar e manter
 
 - [Guia de uso, pedidos prontos e solução de problemas](GUIA_SKILLS_DESENVOLVIMENTO.md)

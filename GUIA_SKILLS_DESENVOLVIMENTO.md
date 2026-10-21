@@ -107,6 +107,20 @@ de validação adicional, sem declarar confirmação sem evidência.
 
 A [opção de auditoria](skills/project-workflow/references/security-audit.md) tem exigências próprias. O kit não a instala nem inicia auditoria em toda alteração de código. Se a execução não puder cumprir os requisitos, a limitação precisa constar no resultado.
 
+### Revisão legal antes de publicar
+
+```text
+Revise [site/projeto] antes da publicação para reduzir riscos jurídicos no Brasil.
+Dados do negócio: [razão social e nome fantasia, CNPJ ou CPF, e-mail e telefone].
+O que vendo ou ofereço: [descrever]. Coleto dados por: [formulário, WhatsApp,
+newsletter, pagamento ou nenhum]. Uso: [analytics, pixels, vídeos, mapas, chat].
+Imagens de pessoas: [quem aparece e se há autorização].
+Comece pelo diagnóstico, implemente em lotes e termine com o checklist
+de feito, pendente e o que precisa de revisão de advogado.
+```
+
+A [referência de conformidade legal](skills/project-workflow/references/conformidade-legal.md) define o diagnóstico, as páginas legais como minutas, a base legal de cada formulário, cookies e embeds, imagens de pessoas e licenças. O agente não deve inventar dados da empresa nem leis, artigos ou prazos, e o resultado não substitui um advogado.
+
 ### Ilustração explicativa com Anatomy
 
 ```text

@@ -16,6 +16,7 @@ Selecione linhas pertinentes ao escopo, critérios de aceitação e instruções
 | Animação ligada ao scroll | Cada cena em desktop e celular com `prefers-reduced-motion` emulado nos dois valores; versão estática completa; âncoras e diálogos com scroll suave; sem overflow horizontal nem erros de console |
 | Documentação | Compatibilidade com código, comandos e caminhos existentes; diferenciar instruções conferidas de execução real |
 | ADR | Convenção local, identificador único, status sustentado por evidência, contexto/decisão/alternativas/consequências; links de substituição coerentes; distinguir aceitação de implementação |
+| Publicação de site com dados, vendas ou imagens de pessoas | Inventário de dados, rastreadores, embeds e licenças; páginas legais marcadas como minuta; nenhum dado da empresa inventado; checklist de feito, pendente e revisão de advogado |
 | CI/infra | Sintaxe/configuração, permissões e impacto operacional; conferir sem provocar deploy ou publicação não autorizados |
 
 Verifique critérios funcionais além de build, lint e types. Um comando verde não prova autorização correta, semântica de negócio ou equivalência visual. Quando a validação falhar, investigue a causa; repita ou amplie verificações só quando houver correção, falha ou dúvida relevante.

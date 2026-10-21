@@ -106,7 +106,7 @@ Ordem: scaffold e configs → tokens e base → dados → primitivos de UI → n
 - Nada de cards idênticos em sequência. Em bento, número de células = número de conteúdos, sem buracos.
 - Cada seção tem uma **interação real**: diagramas com `<button>` reais posicionados sobre o SVG, prévia de produto funcional (abas WAI-ARIA com setas, filtros, busca, troca de ambiente, painel de detalhe, estado vazio com "Limpar filtros"), workflows executáveis simulados, gráficos com leitura de valor ao passar o mouse, botão de copiar com feedback.
 - Prévias de produto são **componentes funcionais**, não screenshots falsos feitos de divs.
-- Dados demonstrativos em `src/data/`, marcados como fictícios no código e com uma nota discreta na página.
+- Dados demonstrativos em `src/data/`, marcados como fictícios no código e com uma nota discreta na página. Antes de publicar, troque ou remova todo conteúdo fictício (nomes, depoimentos, números, fotos) e siga a [revisão legal](../../project-workflow/references/conformidade-legal.md) se o site coletar dados, vender ou mostrar pessoas.
 - Formulários: label acima, ajuda abaixo, erro abaixo com `role="alert"` e `aria-invalid`, loading que mantém a largura do botão, sucesso com foco movido para a mensagem. Se não houver backend, simular localmente e dizer isso.
 - Comandos copiáveis nunca usam nomes de pacote inventados (`npx algo-ficticio` pode virar typosquatting). Use domínios reservados `.example`.
 
