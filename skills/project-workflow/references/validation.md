@@ -13,6 +13,7 @@ Selecione linhas pertinentes ao escopo, critérios de aceitação e instruções
 | Migration | Operações e SQL gerados, impacto em dados, compatibilidade entre versões, backfill e recuperação; não aplicar para validar em ambiente compartilhado sem autorização |
 | Integração externa | Sucesso, falha, timeout, cancelamento e segurança de retries pertinentes; preferir ambientes e dados controlados |
 | Interface | Comparação com Figma, fluxo, larguras pertinentes, teclado/foco, estados e reduced motion; screenshots com conteúdo estabilizado |
+| Animação ligada ao scroll | Cada cena em desktop e celular com `prefers-reduced-motion` emulado nos dois valores; versão estática completa; âncoras e diálogos com scroll suave; sem overflow horizontal nem erros de console |
 | Documentação | Compatibilidade com código, comandos e caminhos existentes; diferenciar instruções conferidas de execução real |
 | ADR | Convenção local, identificador único, status sustentado por evidência, contexto/decisão/alternativas/consequências; links de substituição coerentes; distinguir aceitação de implementação |
 | CI/infra | Sintaxe/configuração, permissões e impacto operacional; conferir sem provocar deploy ou publicação não autorizados |

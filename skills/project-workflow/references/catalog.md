@@ -16,6 +16,8 @@ Referências discutidas com o usuário em 16/10/2026, com adições conferidas e
 | https://famous-mandarin-287.notion.site/Model-Routing-Playbook-3f01be55d9b881fbb5d5f0a20f30b265 | Roteamento por esforço/risco | Página consultada; números econômicos não auditados nem incorporados como garantia |
 | https://github.com/cloudflare/security-audit-skill | Auditoria de segurança e validação independente | README/SKILL.md consultados em 17/10/2026; comando conferido; não instalada |
 | https://github.com/wheresryan22/anatomy | Ilustrações isométricas explicativas | README/SKILL.md consultados em 17/10/2026; comando por projeto conferido; não instalada |
+| https://gsap.com/docs/v3/Plugins/ScrollTrigger/ | Biblioteca: animação ligada ao scroll (GSAP, ScrollTrigger, `@gsap/react`) | Usada em projeto em 21/10/2026 (gsap 3.15.0, @gsap/react 2.1.2); conferir licença e versão atuais |
+| https://github.com/darkroomengineering/lenis | Biblioteca: scroll suave | Usada em projeto em 21/10/2026 (lenis 1.3.27) com ScrollTrigger |
 
 ## Comandos recebidos ou conferidos
 
@@ -51,3 +53,11 @@ Consulte [Cloudflare security-audit](security-audit.md) para escopo e requisitos
 npx skills add https://github.com/cloudflare/security-audit-skill --skill security-audit
 npx skills add wheresryan22/anatomy
 ```
+
+## Uso observado em 21/10/2026
+
+Avaliação feita numa landing page contada pelo scroll, a partir das skills já instaladas. Ver [a referência de scroll](../../frontend-figma-playwright/references/scroll-motion.md).
+
+- **design-motion-principles:** útil no modo de criação. O critério de frequência, o peso por contexto (polimento discreto como base, expressividade nas cenas narrativas) e a exigência de reduced motion orientaram as decisões.
+- **Taste (`design-taste-frontend`):** útil para direção visual e checagem final. A regra contra serifa por padrão foi contornada com justificativa de contexto.
+- **Taste (`gpt-taste`, mesmo pacote):** só os padrões de GSAP serviram (pin, texto com scrub, imagem que cresce ao entrar, `overflow-x` no `main`). Estrutura de funil de vendas, sorteio de layout e lista fechada de fontes não se aplicam a páginas de evento ou institucionais.

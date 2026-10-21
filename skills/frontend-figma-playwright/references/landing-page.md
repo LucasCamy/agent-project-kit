@@ -57,7 +57,8 @@ Regras de stack:
 - Se o projeto já tem stack, **preserve-a** e adapte (ex.: Next.js continua Next.js; Tailwind v3 continua v3, salvo motivo forte).
 - Se estiver vazio, use: Vite + React + TypeScript strict + Tailwind CSS v4 (`@tailwindcss/vite`) + Motion (`motion/react`) + Phosphor Icons + fontes self-hosted via Fontsource.
 - Three.js + React Three Fiber **apenas** se o elemento-assinatura ganhar com 3D de verdade. Caso contrário, SVG/Canvas.
-- Antes de instalar, confira as versões atuais e a compatibilidade entre peers. Nada de dependência desnecessária (sem drei, GSAP ou libs de gráfico se SVG resolve).
+- Se a página for contada pelo scroll (seções fixadas, scrub, scroll horizontal, sequência de quadros), use GSAP + ScrollTrigger + Lenis conforme [a referência de scroll](scroll-motion.md). Motion continua nos estados de UI; não misture os dois no mesmo componente.
+- Antes de instalar, confira as versões atuais e a compatibilidade entre peers. Nada de dependência desnecessária (sem drei, GSAP ou libs de gráfico se SVG ou Motion resolvem).
 
 ## ETAPA 2 — DESIGN.md
 
@@ -69,6 +70,7 @@ Sistema visual obrigatório:
 - Escala de raio documentada (ex.: 4 badges / 8 botões e inputs / 14 painéis / 22 molduras grandes) e seguida em todo lugar.
 - Sombras tingidas com o tom do fundo, nunca preto puro. Brilho só para foco e para o elemento-assinatura.
 - Tipografia: uma família display (preferir eixo de largura variável) + uma mono para dados com `tabular-nums`. Sem Inter por padrão e sem serifa "porque parece premium".
+- Antes de fixar a fonte display, renderize acentos do idioma (é, ã, ç, õ) no peso e no itálico usados. Algumas versões variáveis posicionam acentos errado.
 - Gradientes raros e funcionais (scrim de legibilidade, máscara de bordas, banda de previsão em gráfico). Nada de blobs nem gradiente roxo.
 - Contraste AA calculado para cada token de texto sobre **cada** superfície em que ele aparece (incluindo linhas selecionadas).
 
@@ -116,7 +118,7 @@ Ordem: scaffold e configs → tokens e base → dados → primitivos de UI → n
 - Pulsos animados só para estado realmente ao vivo (máx. 2 a 3 na página).
 - Só `transform`, `opacity`, `filter` e `stroke-dashoffset`. Saídas mais curtas que entradas. Nunca começar em `scale(0)`.
 - `MotionConfig reducedMotion="user"` + tratamento manual de loops, cena e contadores.
-- Proibido `window.addEventListener("scroll")`. Use `useScroll`, `useMotionValueEvent` e IntersectionObserver.
+- Proibido `window.addEventListener("scroll")`. Use `useScroll`, `useMotionValueEvent`, IntersectionObserver ou ScrollTrigger.
 - Nada de expandir conteúdo no hover se isso desloca o layout sob o cursor.
 
 ### Responsividade
@@ -170,6 +172,11 @@ Procure e **corrija**: elementos genéricos, espaçamentos inconsistentes, hiera
 - **Painel de navegador oculto** congela `requestAnimationFrame`: animações e `AnimatePresence mode="wait"` parecem travados. Valide pelo DOM e force frames com um screenshot.
 - **Foco após troca com `AnimatePresence mode="wait"`:** use um ref callback estável (`useCallback`) para focar a mensagem quando ela monta.
 - **Heredocs longos no Git Bash do Windows** quebram. Grave scripts em arquivos e execute.
+- **`backdrop-filter` (ou `transform`/`filter`) no header** vira o bloco de referência dos filhos `position: fixed`: o menu móvel perde altura e fundo. Renderize o painel fora do header.
+- **Lista com `overflow-x-auto` dentro de grid** alarga a coluna além da tela. Use `grid-cols-[minmax(0,1fr)]` e `min-w-0` no item.
+- **Instalar dependência com o dev server aberto** pode deixar a aba com React duplicado ("Invalid hook call"). Reinicie o servidor e recarregue.
+- **Nginx servindo o build:** `add_header` dentro de um `location` anula os do `server`. Repita os cabeçalhos de segurança em cada bloco; HTML com `no-cache`, `/assets/` com cache longo `immutable`.
+- **Animações de scroll** (pin, scrub, Lenis, canvas) têm armadilhas próprias, listadas na [referência de scroll](scroll-motion.md).
 
 ## FORMATO DA RESPOSTA FINAL
 

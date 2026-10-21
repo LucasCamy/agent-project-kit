@@ -119,6 +119,18 @@ Se a figura integrar a UI, siga Figma e confira a integração no navegador.
 
 Use [Anatomy](skills/frontend-figma-playwright/references/anatomy.md) quando a metáfora visual ajudar o conteúdo. Sua geração é especializada; uma figura não precisa acompanhar toda tela ou documento.
 
+### Página contada pelo scroll
+
+```text
+Transforme [página/seções] numa narrativa pelo scroll.
+Técnicas desejadas: [pin, scrub, timeline, clip-path, parallax,
+sequência de quadros, stagger, scroll suave].
+Cada cena deve comunicar [o que muda nela]; mantenha versão estática
+para movimento reduzido e confira desktop e celular com as duas preferências.
+```
+
+A [referência de scroll](skills/frontend-figma-playwright/references/scroll-motion.md) orienta quando usar GSAP, ScrollTrigger e Lenis em vez de Motion, como estruturar as cenas e o que validar. Peça somente as técnicas que servem ao conteúdo; não é preciso usar todas.
+
 ## Ferramentas, acesso e instalações
 
 Os módulos internos são instruções em Markdown. A execução depende do que o agente e o projeto oferecem. Nem todo pedido precisa de Node.js, .NET, navegador, Figma e Linear ao mesmo tempo.
@@ -137,6 +149,7 @@ Publicação, deploy, exclusão de dados e aplicação de migrations compartilha
 | Figma ou Linear sem acesso | Forneça destino/identificadores e acesso necessários ou autorize alternativa para a etapa bloqueada |
 | Playwright ou comando da stack indisponível | Peça que o agente registre a limitação e proponha a verificação viável; não aceite evidência de execução presumida |
 | Projeto sem stack ou comandos | Informe escolhas já feitas; registre o que ainda não existe e deixe o agente inspecionar/propor o necessário |
+| Animações não aparecem no seu navegador | Confira se o sistema está com "reduzir movimento" ligado; a página deve mostrar a versão estática. Use o parâmetro de demonstração do projeto, se houver, ou emule a preferência no Playwright |
 | Resultado incompleto | Compare com os critérios e a matriz; trate a pendência sem marcar o fluxo inteiro como verificado |
 
 ## Personalizar e atualizar
