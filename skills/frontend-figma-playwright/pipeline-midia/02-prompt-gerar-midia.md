@@ -103,9 +103,11 @@ Monte e valide o pacote completo localmente em `[PASTA_DE_SAIDA_OU_PROJETO]` usa
    - Se for Arquétipo ARQ-A: `hero-main.webp`, `section-editorial.webp`, `bento-02-detail.webp`, `contact-space.webp`.
    - Se for Arquétipo ARQ-B: `hero-main.webp`, `sketch-before.webp`, `process-studio-table.webp`, `founder-portrait.webp`.
 
-2. **Baixe você mesmo da internet (Unsplash / Pexels) e converta para `.webp` / `.mp4` em `media/`:**
-   - Todos os ativos complementares previstos para o arquétipo (em ARQ-A: `bento-01.webp`, `bento-03.webp`, `team-01..03.webp`; em ARQ-B: `projects/project-01.webp` a `project-05.webp` e as 6 texturas quadradas `swatches/swatch-01.webp` a `swatch-06.webp` ou fotos correspondentes de aplicação dos materiais).
-   - Os vídeos `hero-ambient.mp4` e `canvas-sequence.mp4` (5 segundos, 24 fps, sem áudio) e extraia os 120 quadros WebP (`1024x576`, qualidade 80) em `media/frames/frame_0001.webp` a `frame_0120.webp`.
+2. **Gere os vídeos (`hero-ambient.mp4` e `canvas-sequence.mp4`) e os 120 quadros com controle visual real:**
+   - **Proibido baixar vídeos de banco às cegas apenas pelo nome na URL** (clipes genéricos com título como "dark-corridor" costumam ter elementos incoerentes com a marca). Se baixar vídeo externo, extraia 3 quadros (`0s`, `2s`, `4s`) e inspecione visualmente antes de aceitar.
+   - **Padrão recomendado (muito superior a vídeo de banco aleatório):** Gere `canvas-sequence.mp4` (5 segundos, 24 fps, 120 quadros em `1024x576`) e `hero-ambient.mp4` usando Python (Pillow/NumPy) + `ffmpeg` **a partir das próprias imagens autorais do projeto**:
+     - **Em ARQ-B (Arquitetura / Design):** Crie uma sequência cinematográfica de 120 quadros ("Do Croqui ao Espaço Construído") partindo da mesma cena de `hero-main.webp`: Quadros `0001–0040` = desenho técnico arquitetônico em traço fino sobre papel linho (`#F2EFE9`) com linhas de cota surgindo progressivamente; Quadros `0041–0085` = revelação gradual de volume, luz solar e texturas de madeira/concreto (cortina diagonal + transição de iluminação); Quadros `0086–0120` = obra finalizada com movimento suave de câmera (`zoompan` / dolly-in) e reflexo vivo na água. Salve também o quadro de croqui puro como `media/sketch-before.webp` para o comparador Antes ↔ Depois.
+     - **Em ARQ-A (Direito / Corporativo):** Crie uma sequência cinematográfica de 120 quadros em chiaroscuro combinando movimento suave de câmera (`dolly-in`), varredura de feixe de luz lateral quente e transição em camadas entre os ambientes gerados (`section-editorial.webp` → `bento-02-detail.webp` → `contact-space.webp`), sem pessoas aleatórias de banco de vídeo.
 
 3. **Gere o `MEDIA_MANIFEST.json` com `status: "ready"`** contendo caminhos locais, `expectedAspectRatio`, `focalPoint`, `alt` em `pt-BR`, créditos e licenças.
 ```
