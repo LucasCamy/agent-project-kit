@@ -145,6 +145,8 @@ para movimento reduzido e confira desktop e celular com as duas preferências.
 
 A [referência de scroll](skills/frontend-figma-playwright/references/scroll-motion.md) orienta quando usar GSAP, ScrollTrigger e Lenis em vez de Motion, como estruturar as cenas e o que validar. Peça somente as técnicas que servem ao conteúdo; não é preciso usar todas.
 
+Quando quiser produzir primeiro o pacote de mídia (questionário de direção de arte, 4 imagens principais, fotos e vídeos gratuitos de apoio, 120 quadros WebP para `<canvas>` via `ffmpeg` e `MEDIA_MANIFEST.json`) e em seguida entregar o pacote pronto para a implementação do código, siga o [pipeline passo a passo de mídia e scrollytelling](skills/frontend-figma-playwright/pipeline-midia/README.md).
+
 ## Ferramentas, acesso e instalações
 
 Os módulos internos são instruções em Markdown. A execução depende do que o agente e o projeto oferecem. Nem todo pedido precisa de Node.js, .NET, navegador, Figma e Linear ao mesmo tempo.

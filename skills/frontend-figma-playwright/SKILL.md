@@ -24,6 +24,6 @@ Se Playwright estiver indisponível, informe a limitação e use alternativa de 
 
 Use [a matriz](../project-workflow/references/validation.md) para fechar evidências. Para landing pages, leia também [o prompt especializado](references/landing-page.md), fornecido pelo usuário. É uma receita específica; aplique-o segundo o briefing atual e o projeto, sem executar suas instruções em tarefas de outra natureza.
 
-Para página contada pelo scroll (seções fixadas, scrub, scroll horizontal, sequência de quadros, scroll suave), leia [a referência de animação ligada ao scroll](references/scroll-motion.md). Ela orienta a escolha entre Motion e GSAP, a versão para movimento reduzido e a validação com as duas preferências.
+Para página contada pelo scroll (seções fixadas, scrub, scroll horizontal, sequência de quadros, scroll suave), leia [a referência de animação ligada ao scroll](references/scroll-motion.md). Ela orienta a escolha entre Motion e GSAP, a versão para movimento reduzido e a validação com as duas preferências. Quando a tarefa separar a geração de imagens, vídeos, quadros de `<canvas>` e `MEDIA_MANIFEST.json` da etapa de implementação do código, siga [o pipeline passo a passo de mídia e scrollytelling](pipeline-midia/README.md).
 
 Para uma ilustração isométrica que explique um conceito do produto, avalie [Anatomy como opção especializada](references/anatomy.md). Escolha pelo valor explicativo e pelo escopo; sua adoção preserva o fluxo Figma e a conferência no navegador.
