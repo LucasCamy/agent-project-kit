@@ -92,6 +92,8 @@ Diálogos em tela cheia (menu, lightbox, apresentação) devem chamar `lenis.sto
 | Hook chamado dentro de expressão (`visivel && useMovimento()`) | Viola as regras de hooks. Chame o hook antes e combine os valores |
 | Âncoras param atrás do menu fixo | Use `anchors: { offset }` do Lenis ou `scroll-padding-top` sem Lenis |
 | Screenshot captura a cena no meio da transição | Role com `scrollTo` instantâneo e espere o scrub assentar (cerca de 1,5 s) |
+| Quadros `.avif` falham silenciosamente no Chrome/Edge (caindo para `.webp`) | `ffmpeg -f image2 frame_%04d.avif` com `-still-picture 1` em lote grava header `av1C` vazio. Codifique um arquivo por vez num laço (`-frames:v 1` por quadro) |
+| Pins abaixo da dobra calculam posição errada com `React.lazy` (`Suspense`) | Quando o chunk assíncrono monta depois do Hero, chame `ScrollTrigger.sort()` e `ScrollTrigger.refresh()` no `useEffect` de montagem |
 
 ## Validação
 

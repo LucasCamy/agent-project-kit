@@ -20,9 +20,12 @@ Objetivo: Criar a landing page scrollytelling completa usando o **Arquétipo ARQ
 - Execute todas as etapas (Inspeção → cópia de `media/` para `public/media/` → `AGENTS.md` → `DESIGN.md` → `IMPLEMENTATION_PLAN.md` → Implementação → Validação com Playwright → Revisão crítica) sem parar em decisões visuais ou técnicas razoáveis.
 - [Se autorizar dispensa do Figma nesta tarefa: Caso o Figma MCP não esteja conectado nesta sessão, fica autorizado seguir direto para `DESIGN.md` e código.]
 
-## USO OBRIGATÓRIO DE AVIF + FALLBACK WEBP
+## USO OBRIGATÓRIO DE AVIF + FALLBACK WEBP E HIGIENE DE MÍDIA
 - Todas as imagens estáticas e os 120 quadros em `public/media/frames/` existem tanto em **`.avif`** quanto em **`.webp`**.
-- Use `<picture><source srcSet="/media/[arquivo].avif" type="image/avif" /><source srcSet="/media/[arquivo].webp" type="image/webp" /><img src="/media/[arquivo].webp" ... /></picture>` em todas as imagens e carregue `frame_%04d.avif` (com fallback para `.webp` em `onerror`) no `<canvas>`.
+- Use `<picture><source srcSet="/media/[arquivo].avif?v=..." type="image/avif" /><source srcSet="/media/[arquivo].webp?v=..." type="image/webp" /><img src="/media/[arquivo].webp?v=..." ... /></picture>` em todas as imagens e carregue `frame_%04d.avif` (com fallback para `.webp` em `onerror`) no `<canvas>`.
+- **Não copie `canvas-sequence.mp4` para `public/media/`** (o `<canvas>` consome apenas `public/media/frames/`).
+- **Verifique no navegador real se `frame_0001.avif` decodifica (`naturalWidth > 0`)**: caso tenham sido gerados em lote com `-f image2` (`av1C` vazio), recodifique-os individualmente (`-frames:v 1` por arquivo a partir dos `.webp`).
+- **Cache busting automático (`?v=<hash>`):** gere `__MEDIA_VERSION__` no `vite.config.ts` a partir de `public/media/` e anexe `?v=${MEDIA_VERSION}` nos caminhos de `src/data/media.ts`.
 
 ## FORMAS E MECÂNICAS DESTE ARQUÉTIPO (ARQ-A)
 - **Paleta e Grade:** Fundo `#0A0A0B`, superfície `#111113`, fios aparentes de `1px solid rgba(242,239,233,0.12)`, texto `#F2EFE9`, acento único `#C85A32`.
@@ -53,9 +56,13 @@ Objetivo: Criar a landing page scrollytelling completa usando o **Arquétipo ARQ
 - Execute todas as etapas (Inspeção → organização de `public/media/` → `AGENTS.md` → `DESIGN.md` → `IMPLEMENTATION_PLAN.md` → Implementação → Validação com Playwright → Revisão crítica) sem parar em decisões visuais ou técnicas razoáveis.
 - [Se autorizar dispensa do Figma nesta tarefa: Caso o Figma MCP não esteja conectado nesta sessão, fica autorizado seguir direto para `DESIGN.md` e código.]
 
-## USO OBRIGATÓRIO DE AVIF + FALLBACK WEBP
+## USO OBRIGATÓRIO DE AVIF + FALLBACK WEBP, MÍDIA DERIVADA E CACHE BUSTING
 - Todas as imagens estáticas (`hero-main`, `sketch-before`, `section-editorial`, `bento-01..03`, `team-01..03`, `contact-space`) e os 120 quadros em `public/media/frames/` possuem versão **`.avif`** (primária) e **`.webp`** (fallback).
 - Use `<picture>` priorizando `image/avif` em todas as imagens e carregue `frame_%04d.avif` (com fallback para `.webp`) no `<canvas>`.
+- **Não copie `canvas-sequence.mp4` para `public/media/`** (o `<canvas>` consome apenas `public/media/frames/`).
+- **Verifique se `frame_0001.avif` decodifica no Chromium (`naturalWidth > 0`)**: caso falhe por `av1C` vazio de lote `-f image2`, recodifique quadro a quadro (`-frames:v 1` por arquivo a partir dos `.webp`).
+- **Mídia derivada (`scripts/gerar-midia.mjs`):** gere ou valide as cotas/anotações caligráficas sobre `sketch-before.{avif,webp}` e os 6 recortes táteis `swatch-01..06.{avif,webp}` (`640×640`) da seção `04 — MATERIAIS`.
+- **Cache busting automático (`?v=<hash>`):** gere `__MEDIA_VERSION__` no `vite.config.ts` a partir de `public/media/` e anexe `?v=${MEDIA_VERSION}` em `src/data/media.ts`. Se usar `React.lazy` para seções abaixo da dobra, chame `ScrollTrigger.sort()` e `ScrollTrigger.refresh()` após montar.
 
 ## DIREÇÃO VISUAL E FORMAS OBRIGATÓRIAS DESTE ARQUÉTIPO (ARQ-B)
 - **Paleta e Temperatura:** Tema claro orgânico predominante (fundo linho/areia `#F2EFE9`, superfície `#EAE5DC`, texto carvão `#1C1B18`, texto secundário `#6E6A63`, botão pílula escuro `#1C1B18`), alternando para um **único capítulo escuro `#191815` na seção `02 — Projetos`** para destacar a fotografia iluminada das casas.
