@@ -1,113 +1,70 @@
-# Etapa 2 e 3: Prompts Padronizados para Gerar Imagens, Vídeos e Manifesto
+# Etapa 2 e 3: Prompt Mestre Automático (Entrevista ➔ Mídia AVIF/WebP + Vídeo ➔ Prompt do Código)
 
-Escolha abaixo o prompt correspondente ao arquétipo definido em [01-catalogo-formas-e-animacoes.md](01-catalogo-formas-e-animacoes.md):
-1. **Bloco 1 — Questionário Interativo** (quando quiser que o agente ajude a escolher o arquétipo e faça as perguntas antes de gerar as imagens).
-2. **Prompt ARQ-A — Grade Estrutural Noturna** (ex.: Direito, Consultoria, Finanças).
-3. **Prompt ARQ-B — Editorial Orgânico & Tátil** (ex.: Arquitetura, Interiores, Design — inclui **par Croqui ↔ Obra no mesmo ângulo**, **galeria horizontal** e **amostras de materiais**).
-4. **Prompt de Consolidação Local (`ffmpeg` + `MEDIA_MANIFEST.json`)** — para converter os PNGs baixados, buscar os ativos gratuitos restantes e extrair os 120 quadros do `<canvas>`.
+Este arquivo contém:
+1. **Prompt Mestre Semi-Automático (Formulário Interativo):** Você cola apenas este prompt inicial; a IA faz as perguntas de múltipla escolha para preencher o briefing e, após a sua resposta, **ela mesma gera as imagens (em AVIF + WebP), renderiza os vídeos e os 120 quadros do `<canvas>`, cria o `MEDIA_MANIFEST.json` e já entrega o prompt final preenchido para você colar no agente de código (Claude)**.
+2. **Prompts Diretos por Arquétipo (`ARQ-A` e `ARQ-B`):** Caso você já queira pular a entrevista e mandar gerar direto.
+3. **Prompt de Consolidação Local (`Python + ffmpeg`):** Para converter todas as imagens e os 120 quadros em **`.avif` + `.webp`** e renderizar os vídeos sem depender de clipes aleatórios da internet.
 
 ---
 
-## 1. Questionário Interativo (Escolha de Arquétipo + Direção de Arte)
+## 1. Prompt Mestre Semi-Automático (Copiar e Enviar para Iniciar Qualquer Projeto)
+
+> **Como usar:** Cole o bloco abaixo no ChatGPT / Codex. Ele conduzirá o formulário enxuto, gerará todo o pacote de imagens (`.avif` e `.webp`) + vídeos (`.mp4` + 120 quadros `.avif`/`.webp`) e entregará no final o bloco Markdown pronto para enviar ao Claude.
 
 ```markdown
-Quero produzir o pacote completo de mídia (`media/` + 120 quadros WebP para `<canvas>` + `MEDIA_MANIFEST.json`) para uma landing page scrollytelling.
+Atue como Diretor de Criação Digital, Produtor de Mídia Scrollytelling e Engenheiro de Prompt.
 
-Antes de gerar as imagens, faça-me estas perguntas de forma objetiva para definirmos o conceito:
+Vamos criar uma landing page scrollytelling completa dividida em duas fases:
+- **Fase A (com você):** Definir o conceito por meio de um formulário rápido, gerar as imagens autorais, converter tudo para **AVIF + WebP**, renderizar os vídeos (`hero-ambient.mp4` e `canvas-sequence.mp4`) + 120 quadros (`1024×576` em `.avif` e `.webp`), montar o `MEDIA_MANIFEST.json` e **gerar o Prompt Markdown Final preenchido** para eu copiar e colar no Claude.
+- **Fase B (no Claude):** O Claude lerá a pasta de mídias e o prompt gerado por você para programar a página completa com GSAP + ScrollTrigger + Lenis.
 
-1. **Público e Nicho:** Qual é a área de atuação e quem é o cliente ideal?
-2. **Arquétipo Visual:** Qual conceito você prefere?
-   - **ARQ-A (Grade Estrutural Noturna):** Fundo escuro `#0A0A0B`, fios de `1px`, retrato em chiaroscuro, bento xadrez e linha do tempo `01–04`.
-   - **ARQ-B (Editorial Orgânico & Tátil):** Fundo claro linho/travertino `#F2EFE9` + galeria horizontal escura `#191815`, Hero que encolhe com scroll para virar foto no Manifesto, cortina Antes ↔ Depois (Croqui à mão vs. Foto real no mesmo ângulo), mesa tátil de 6 materiais e processo com coluna fixa.
-   - **ARQ-C (Personalizado):** Escolher combinação específica de Hero, Portfólio, Cena-Assinatura e Método.
-3. **Sujeito do Hero (`hero-main.webp`):** Retrato editorial ou ambiente/obra? Qual a atmosfera de luz?
-4. **Cena-Assinatura Principal:** Será um comparador Antes ↔ Depois (ex.: Croqui 2022 ↔ Obra 2024), uma Mesa de Materiais, uma Sequência de 120 quadros em `<canvas>` ou ambos?
-5. **Projetos / Frentes e Equipe:** Quantas obras/áreas serão destacadas e a seção de autoria mostrará 1 fundador(a) em ambiente de trabalho ou 3 sócios em retrato?
+### PASSO 1 — FAÇA-ME AGORA ESTE FORMULÁRIO (NÃO GERE AS IMAGENS ANTES DE EU RESPONDER):
+Apresente as 6 perguntas abaixo de forma limpa para eu responder rapidamente (posso responder só com os códigos, ex.: `1: Clínica de Longevidade | 2: ARQ-B | 3: F:\clinica\img ...`):
+
+1. **Nicho, Nome da Marca e Cidade:** (Ex.: Escritório de Advocacia Empresarial / Estúdio de Arquitetura / Clínica Médica em São Paulo)
+2. **Arquétipo Visual e Estrutura da Página:**
+   - **[ARQ-A] Grade Estrutural Noturna:** Fundo escuro `#0A0A0B`, fios de `1px`, retrato em chiaroscuro + 4 pilares, bento xadrez `01–06`, sequência de 120 quadros no `<canvas>`, linha horizontal `01–04` e 3 sócios P&B → cor.
+   - **[ARQ-B] Editorial Orgânico & Tátil:** Fundo claro linho/travertino `#F2EFE9` + galeria horizontal escura `#191815` com cursor `"ARRASTE"`, régua lateral `01 / 06`, Hero fullscreen que encolhe com scroll para virar foto no Manifesto, cortina Antes ↔ Depois (`Croqui/Projeto` ↔ `Obra Entregue` no mesmo ângulo), mesa tátil de 6 materiais/amostras e processo com coluna esquerda fixa + 6 etapas verticais.
+   - **[CUSTOM] Mix & Match:** Escolher separadamente Hero (`HERO-1/2/3`), Portfólio (`PORT-1/2`), Cena-Assinatura (`SIGN-1: Cortina Antes/Depois`, `SIGN-2: Mesa de Amostras`, `SIGN-3: 120 quadros no Canvas`), Método (`METH-1/2`) e Equipe (`TEAM-1/2`).
+3. **Cenas das 4 Imagens Principais (ou diga "sugira você para o meu nicho"):**
+   - Imagem 1 (`hero-main`):
+   - Imagem 2 (`section-editorial` ou `sketch-before` no mesmo ângulo do Hero):
+   - Imagem 3 (`bento-02-detail` ou `process-studio-table`):
+   - Imagem 4 (`contact-space`):
+4. **Narrativa do Vídeo e dos 120 Quadros do `<canvas>` (`canvas-sequence.mp4`):**
+   - **[V1] Do Traço à Obra Construída:** Croqui técnico em papel linho ➔ varredura diagonal de luz dourada ➔ obra real iluminada com movimento suave de câmera e reflexo vivo.
+   - **[V2] Travessia Cinematográfica Chiaroscuro:** Movimento contínuo de câmera e feixe de luz lateral conectando as 3 cenas autorais do projeto.
+   - **[V3] Outra transição personalizada:** (descrever).
+5. **Pasta de Destino neste Computador:** (Ex.: `F:\meu-projeto\img`)
+6. **Cor de Acento Preferida (ou "automática pelo arquétipo"):**
+
+---
+
+### PASSO 2 — O QUE VOCÊ DEVE FAZER AUTOMATICAMENTE ASSIM QUE EU RESPONDER:
+1. **Gerar as 4 imagens principais** seguindo a proporção e o respiro para tipografia do arquétipo escolhido.
+2. **Montar o pacote completo na pasta de destino** usando Python (Pillow/NumPy) + `ffmpeg`:
+   - Salvar **todas** as imagens estáticas em **dois formatos: `.avif` (primário, exigido pelo Claude) e `.webp` (fallback)** (`hero-main.avif`/`.webp`, `section-editorial.avif`/`.webp`, `bento-01..03.avif`/`.webp`, `team-01..03.avif`/`.webp`, `contact-space.avif`/`.webp`, e `sketch-before.avif`/`.webp` quando usar cortina Antes/Depois).
+   - **Proibido baixar vídeos aleatórios de bancos gratuitos apenas pelo nome na URL.** Gere `hero-ambient.mp4` (1920×1080, 5s, 24fps, sem áudio) e `canvas-sequence.mp4` (1024×576, 5s, 24fps, sem áudio) por script Python + `ffmpeg` diretamente a partir das imagens autorais do projeto (simulando câmera, varredura de luz, croqui→obra e reflexo), e extraia os **120 quadros tanto em `.avif` (`frames/frame_0001.avif`..`frame_0120.avif`) quanto em `.webp` (`frames/frame_0001.webp`..`frame_0120.webp`)**.
+   - Inspecione 3 quadros (`frame_0010`, `frame_0060`, `frame_0110`) para confirmar a qualidade visual e gere o `MEDIA_MANIFEST.json` com `status: "ready"`.
+3. **Entregar no final da sua resposta um bloco de código Markdown chamado `PROMPT PARA COLAR NO CLAUDE`**, já totalmente preenchido com:
+   - Os caminhos reais de `F:/Skills/...` e da pasta de mídias gerada;
+   - A lista de todos os arquivos `.avif`, `.webp` e `.mp4` com seus `focalPoints` e `alt`;
+   - As regras do arquétipo escolhido e o mapeamento das 10 técnicas de scroll (GSAP + ScrollTrigger + Lenis) para o Claude executar o código sozinho.
 ```
 
 ---
 
-## 2. Prompt ARQ-A — Gerar Mídias para Grade Estrutural Noturna (Ex.: Direito / Consultoria)
+## 2. Prompt de Consolidação / Correção de Vídeo e Conversão AVIF + WebP
+
+Use este prompt se você já gerou as imagens e precisa apenas refazer os vídeos/quadros com qualidade procedural e garantir que **todas as imagens e os 120 quadros existam em `.avif` e `.webp`**:
 
 ```markdown
-Atue como Diretor de Arte Fotográfica e Produtor de Mídia para Web Scrollytelling (Arquétipo ARQ-A: Grade Estrutural Noturna, fundo `#0A0A0B`, fios de `1px`, iluminação chiaroscuro e acento `#C85A32`).
+Atualize o pacote de mídia na pasta `[CAMINHO_DA_PASTA_DE_MIDIA]` usando Python (Pillow / NumPy) + `ffmpeg`:
 
-Nicho do projeto: [DESCREVER NICHO, ex.: Escritório de Advocacia Estratégica em São Paulo].
-
-### ENTREGA 1 — Gere agora (com sua ferramenta de imagem) os 4 visuais-chave abaixo:
-1. `hero-main.webp` (4:5 vertical): Retrato editorial em chiaroscuro do(a) sócio(a)-fundador(a) em alfaiataria escura sobre fundo escuro com nuance verde-petróleo/carvão, deixando respiro para tipografia gigante sobreposta.
-2. `section-editorial.webp` (4:3 horizontal): Cena narrativa institucional (ex.: profissional descendo escadaria clássica de madeira com pasta de couro sob luz lateral dramática).
-3. `bento-02-detail.webp` (4:3 horizontal): Close-up tátil de execução (ex.: mãos assinando contrato com caneta-tinteiro sobre mesa de madeira maciça sob luz quente de abajur).
-4. `contact-space.webp` (16:10 horizontal): Sala de conselho/reunião de alto padrão à noite, parede de vidro com luzes da cidade desfocadas ao fundo.
-
-### ENTREGA 2 — Liste os ativos gratuitos (Unsplash / Pexels) que irão compor o pacote local:
-- `bento-01.webp` (4:5 vertical) e `bento-03.webp` (4:5 vertical) para o grid xadrez.
-- `team-01.webp`, `team-02.webp`, `team-03.webp` (3:4 vertical) para os 3 sócios.
-- `hero-ambient.mp4` (5s loop escuro) e `canvas-sequence.mp4` (5s em movimento contínuo para extrair 120 quadros WebP `1024x576`).
-```
-
----
-
-## 3. Prompt ARQ-B — Gerar Mídias para Editorial Orgânico & Tátil (Ex.: Arquitetura / Interiores / Design)
-
-> **Diferencial deste prompt:** Gera as mídias específicas do conceito editorial claro/tátil (como no vídeo `arquitetura-web.mp4`): o Hero que também é o ambiente da comparação, o **Croqui à mão exatamente no mesmo ângulo da foto do Hero**, a mesa de trabalho do processo e o retrato autoral no estúdio.
-
-```markdown
-Atue como Diretor de Arte de Fotografia Arquitetônica e Produtor de Mídia para Web Scrollytelling (Arquétipo ARQ-B: Editorial Orgânico & Tátil — paleta linho/travertino `#F2EFE9` combinada com galeria noturna `#191815`, concreto aparente, madeira natural e luz solar).
-
-Nicho do projeto: [DESCREVER NICHO, ex.: Estúdio de Arquitetura e Interiores Residenciais de Alto Padrão em São Paulo].
-
-### ENTREGA 1 — Gere agora (com sua ferramenta de imagem) os 4 visuais-chave abaixo:
-
-1. `hero-main.webp` (Proporção 16:10 horizontal):
-   - Cena: Sala de estar arquitetônica contemporânea de alto padrão com pé-direito amplo, forro de madeira ripada/freijó, piso em travertino romano, sofá de linho claro à esquerda, poltrona de couro caramelo, mesa de centro baixa em madeira maciça e grandes caixilhos de vidro de piso a teto abrindo para um jardim tropical denso e piscina com espelho d'água ao entardecer.
-   - Uso duplo: Será o Hero fullscreen (que encolhe com scroll para virar a foto do Manifesto) **e também o lado direito ("ENTREGA · 2024") do comparador Antes ↔ Depois**.
-
-2. `sketch-before.webp` (Proporção 16:10 horizontal — **MESMO ENQUADRAMENTO E PERSPECTIVA DA IMAGEM 1**):
-   - Cena: **Exatamente a mesma sala, mesma câmera, mesma posição do sofá, poltrona, mesa de centro, caixilhos e jardim da Imagem 1**, porém renderizada como um **croqui arquitetônico técnico desenhado à mão** sobre papel creme claro (linhas finas de grafite/nanquim com hachuras de perspectiva e leve aquarela amadeirada apenas nos painéis de madeira).
-   - Uso: Será o lado esquerdo (`CROQUI · 2022`) da cortina interativa `clip-path` sobreposta à `hero-main.webp` (`ENTREGA · 2024`).
-
-3. `process-studio-table.webp` (Proporção 4:3 horizontal):
-   - Cena: Mesa de madeira do estúdio vista em ângulo superior/diagonal com plantas técnicas abertas em papel sulfite/vegetal, maquete volumétrica física em madeira balsa e base branca, escalímetro, lápis e luz natural lateral suave.
-   - Uso: Imagem fixa da coluna esquerda na seção `05 — Processo`.
-
-4. `founder-portrait.webp` (Proporção 3:4 vertical):
-   - Cena: Retrato editorial natural da arquiteta/sócia-fundadora apoiada na mesa de madeira do estúdio ao lado de uma maquete branca e plantas arquitetônicas, janela com luz natural à direita e estante com amostras de pedra e madeira ao fundo.
-   - Uso: Seção `06 — Estúdio`.
-
-### ENTREGA 2 — Planeje os ativos complementares gratuitos (Unsplash / Pexels) para o script local baixar:
-- **5 Obras para o Trilho Horizontal (`projects/project-01.webp` a `project-05.webp`):**
-  1. `project-01.webp` (16:10): Casa contemporânea em concreto aparente e brises de madeira com espelho d'água e jardim tropical (`Casa Cidade Jardim`).
-  2. `project-02.webp` (16:10): Varanda de praia com pérgola de madeira cumaru, sofá externo em linho e vista para o mar (`Casa Baleia`).
-  3. `project-03.webp` (4:5 vertical): Sala de apartamento com marcenaria sob medida e vista para a copa das árvores (`Apartamento Alto de Pinheiros`).
-  4. `project-04.webp` (4:5 vertical): Escada escultural em madeira maciça e concreto aparente com iluminação zenital (`Casa Pacaembu`).
-  5. `project-05.webp` (4:5 vertical): Banho revestido em travertino aberto para jardim interno (`Casa Jardim América`).
-- **6 Amostras de Textura (`swatches/swatch-01.webp` a `swatch-06.webp`, quadradas 1:1, `400x400`):**
-  `01 Travertino romano`, `02 Concreto aparente`, `03 Cumaru`, `04 Freijó`, `05 Terracota`, `06 Linho`.
-- **Vídeo e Sequência de Quadros (`canvas-sequence.mp4` + 120 quadros `frames/frame_0001.webp` a `frame_0120.webp`):**
-  Movimento contínuo de luz e arquitetura de 5 segundos para `<canvas>` opcional ou ambiência.
-```
-
----
-
-## 4. Prompt de Consolidação Local (`ffmpeg` + Download + `MEDIA_MANIFEST.json`)
-
-Depois que o agente gerar as 4 imagens na conversa, baixe-as para sua pasta local de `Downloads` (ou anexe-as) e envie este comando ao agente local:
-
-```markdown
-Baixei as 4 imagens geradas para `[CAMINHO_DA_PASTA_DE_DOWNLOADS]` (ou estão anexadas).
-
-Monte e valide o pacote completo localmente em `[PASTA_DE_SAIDA_OU_PROJETO]` usando `ffmpeg`, sem me pedir novos links:
-
-1. **Converta os 4 PNGs gerados para `.webp`** (qualidade 84, mantendo proporção original) dentro de `media/`:
-   - Se for Arquétipo ARQ-A: `hero-main.webp`, `section-editorial.webp`, `bento-02-detail.webp`, `contact-space.webp`.
-   - Se for Arquétipo ARQ-B: `hero-main.webp`, `sketch-before.webp`, `process-studio-table.webp`, `founder-portrait.webp`.
-
-2. **Gere os vídeos (`hero-ambient.mp4` e `canvas-sequence.mp4`) e os 120 quadros com controle visual real:**
-   - **Proibido baixar vídeos de banco às cegas apenas pelo nome na URL** (clipes genéricos com título como "dark-corridor" costumam ter elementos incoerentes com a marca). Se baixar vídeo externo, extraia 3 quadros (`0s`, `2s`, `4s`) e inspecione visualmente antes de aceitar.
-   - **Padrão recomendado (muito superior a vídeo de banco aleatório):** Gere `canvas-sequence.mp4` (5 segundos, 24 fps, 120 quadros em `1024x576`) e `hero-ambient.mp4` usando Python (Pillow/NumPy) + `ffmpeg` **a partir das próprias imagens autorais do projeto**:
-     - **Em ARQ-B (Arquitetura / Design):** Crie uma sequência cinematográfica de 120 quadros ("Do Croqui ao Espaço Construído") partindo da mesma cena de `hero-main.webp`: Quadros `0001–0040` = desenho técnico arquitetônico em traço fino sobre papel linho (`#F2EFE9`) com linhas de cota surgindo progressivamente; Quadros `0041–0085` = revelação gradual de volume, luz solar e texturas de madeira/concreto (cortina diagonal + transição de iluminação); Quadros `0086–0120` = obra finalizada com movimento suave de câmera (`zoompan` / dolly-in) e reflexo vivo na água. Salve também o quadro de croqui puro como `media/sketch-before.webp` para o comparador Antes ↔ Depois.
-     - **Em ARQ-A (Direito / Corporativo):** Crie uma sequência cinematográfica de 120 quadros em chiaroscuro combinando movimento suave de câmera (`dolly-in`), varredura de feixe de luz lateral quente e transição em camadas entre os ambientes gerados (`section-editorial.webp` → `bento-02-detail.webp` → `contact-space.webp`), sem pessoas aleatórias de banco de vídeo.
-
-3. **Gere o `MEDIA_MANIFEST.json` com `status: "ready"`** contendo caminhos locais, `expectedAspectRatio`, `focalPoint`, `alt` em `pt-BR`, créditos e licenças.
+1. **Garanta formato duplo (`.avif` + `.webp`) em tudo:**
+   - O Claude exige imagens em **`.avif`** (com `.webp` como fallback). Converta todas as imagens estáticas da pasta (`hero-main`, `section-editorial`, `bento-01..03`, `team-01..03`, `contact-space`, `sketch-before`) e todos os 120 quadros da pasta `frames/` para que existam simultaneamente em `.avif` (`-c:v libsvtav1 -crf 28` ou `libaom-av1 -still-picture 1`) e em `.webp` (qualidade 84).
+2. **Recrie `canvas-sequence.mp4` (5s, 24fps, `1024×576`) e `hero-ambient.mp4` (5s, 24fps, `1920×1080`, sem áudio) a partir das nossas imagens autorais (sem vídeos genéricos de banco):**
+   - **Se for Arquétipo ARQ-B (Arquitetura / Editorial):** Gere `sketch-before.avif` e `.webp` (croqui técnico em papel linho `#F2EFE9` com mesmo enquadramento de `hero-main`) e renderize os 120 quadros mostrando: Frames `0001–0035` (croqui ganhando linhas de eixo e hachuras com dolly-in suave) ➔ Frames `0036–0085` (varredura diagonal com linha dourada revelando a obra real iluminada) ➔ Frames `0086–0120` (obra completa com luz interna e micro-ondulação no reflexo d'água).
+   - **Se for Arquétipo ARQ-A (Direito / Corporativo):** Renderize os 120 quadros em chiaroscuro conectando as 3 cenas autorais com movimento suave de câmera e varredura de feixe de luz quente lateral.
+3. Inspecione visualmente os quadros `0010`, `0060` e `0110`, atualize o `MEDIA_MANIFEST.json` registrando os caminhos `.avif` e `.webp` e me entregue o **Prompt Final atualizado para colar no Claude**.
 ```

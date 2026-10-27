@@ -35,9 +35,9 @@ Usar as mesmas 10 tecnologias de scroll (GSAP, ScrollTrigger, Lenis, Pin, Scrub,
 
 1. **Escolher o conceito em [01-catalogo-formas-e-animacoes.md](01-catalogo-formas-e-animacoes.md):**
    Analise o público (ou um vídeo `.mp4` de referência) e selecione o **Arquétipo Visual**, o **Conjunto de Formas de Seção** e onde cada uma das **10 técnicas de scroll** será usada.
-2. **Gerar os ativos visuais com [02-prompt-gerar-midia.md](02-prompt-gerar-midia.md):**
-   Use o questionário ou envie direto o prompt da variante escolhida para gerar as imagens autorais (incluindo pares especiais como *Croqui vs. Obra Pronta* ou *Amostras de Materiais* quando o arquétipo pedir).
-3. **Empacotar localmente e validar o [03-schema-media-manifest.md](03-schema-media-manifest.md):**
-   Converta os PNGs em WebP com `ffmpeg`, baixe fotos/vídeos complementares gratuitos, extraia os 120 quadros WebP (`1024x576`) e gere o `MEDIA_MANIFEST.json` com `status: "ready"`.
+2. **Gerar os ativos visuais em AVIF + WebP com [02-prompt-gerar-midia.md](02-prompt-gerar-midia.md):**
+   Cole o **Prompt Mestre Semi-Automático** (Bloco 1 de `02-prompt-gerar-midia.md`): a IA faz as 6 perguntas do formulário (Nicho, Arquétipo `ARQ-A / ARQ-B / CUSTOM`, Cenas, Transição do Vídeo/Canvas, Pasta de destino e Cor) e, após sua resposta, gera automaticamente as imagens em **`.avif` + `.webp`**, renderiza os vídeos e os 120 quadros por Python + `ffmpeg` sobre as imagens autorais (sem vídeos genéricos de banco) e **já entrega o Prompt Markdown Final preenchido para colar no Claude**.
+3. **Validar o formato duplo em [03-schema-media-manifest.md](03-schema-media-manifest.md):**
+   Confira se todas as imagens estáticas e os 120 quadros (`1024x576`) existem em `.avif` (primário, exigido pelo Claude) e `.webp` (fallback) e se o `MEDIA_MANIFEST.json` está com `status: "ready"`.
 4. **Construir o código com [04-prompt-implementar-codigo.md](04-prompt-implementar-codigo.md):**
    Envie o prompt padronizado (Modular ou Preset do Arquétipo) para o agente implementador criar a aplicação completa e validar com Playwright em desktop, celular e `prefers-reduced-motion`.

@@ -72,7 +72,7 @@ Ofereça um parâmetro de demonstração (por exemplo, `?movimento=1`) que force
 
 ## Sequência de imagens em canvas
 
-- Gere quadros WebP a partir de vídeo ou fotos com ffmpeg (cerca de 12 fps, 1024 px de largura). 150 quadros ficam em torno de 5 MB.
+- Gere quadros em AVIF (primário) e WebP (fallback) a partir de vídeo ou fotos com ffmpeg (12 a 24 fps, 1024 px de largura, por exemplo `1024x576`). Evite vídeos de banco baixados às cegas sem inspecionar os quadros; prefira sequências geradas sobre as próprias imagens autorais do projeto (como em [pipeline-midia](../pipeline-midia/02-prompt-gerar-midia.md)).
 - Comece o download só quando a cena estiver próxima (um gatilho com `start: 'top 250%'`, `once: true`).
 - Desenhe o quadro pedido ou o carregado mais próximo antes dele; redesenhe quando o quadro esperado chegar.
 - Faça o "cover" no canvas manualmente e limite a resolução a `devicePixelRatio <= 2`.
