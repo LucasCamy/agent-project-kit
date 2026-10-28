@@ -22,7 +22,7 @@ Se faltar Figma MCP, destino ou permissão, solicite apenas a informação/acess
 
 Se Playwright estiver indisponível, informe a limitação e use alternativa de navegador já autorizada ou solicite uma. Não declare teste visual completo enquanto a validação exigida estiver pendente.
 
-Use [a matriz](../project-workflow/references/validation.md) para fechar evidências. Para landing pages, leia também [o prompt especializado](references/landing-page.md), fornecido pelo usuário. É uma receita específica; aplique-o segundo o briefing atual e o projeto, sem executar suas instruções em tarefas de outra natureza.
+Use [a matriz](../project-workflow/references/validation.md) para fechar evidências. Para criação ou redesign de telas de aplicações web, sistemas, painéis e fluxos (padrão usado em projetos como FinanceHub e GymHub), leia [o sistema visual de produto](references/product-ui-system.md). Para landing pages, leia também [o prompt especializado](references/landing-page.md), fornecido pelo usuário.
 
 Para página contada pelo scroll (seções fixadas, scrub, scroll horizontal, sequência de quadros, scroll suave), leia [a referência de animação ligada ao scroll](references/scroll-motion.md). Ela orienta a escolha entre Motion e GSAP, a versão para movimento reduzido e a validação com as duas preferências. Quando a tarefa separar a geração de imagens, vídeos, quadros de `<canvas>` e `MEDIA_MANIFEST.json` da etapa de implementação do código, siga [o pipeline passo a passo de mídia e scrollytelling](pipeline-midia/README.md).
 

@@ -38,22 +38,25 @@ Recursos relacionados:
 
 ---
 
-## 2. Playbook `/frontend` (Interfaces, Aplicações Web, Design System e UX)
+## 2. Playbook `/frontend` (Interfaces, Sistemas Web, Redesign de Telas e UX)
 
 Recursos relacionados:
 - [frontend-figma-playwright](../../frontend-figma-playwright/SKILL.md)
+- [product-ui-system.md](../../frontend-figma-playwright/references/product-ui-system.md)
+- [landing-page.md](../../frontend-figma-playwright/references/landing-page.md)
 - [validation.md](../../project-workflow/references/validation.md)
+- [docker-deploy.md](../../project-workflow/references/docker-deploy.md)
 
-### Como conduzir (Criar ou Editar/Ajustar):
-1. **Inspecione o front-end atual:** framework (React, Vite, Next.js, Angular, Vue), estilização (Tailwind, CSS Modules), tokens e componentes existentes.
-2. **Atue como Designer de Produto + Tech Lead Front-end:**
-   - Antes de alterar ou criar uma tela, aponte o que pode ser melhorado em:
-     - **Estados completos:** vazio (`empty state`), carregando (`skeleton/loading`), erro com recuperação, sucesso e desabilitado;
-     - **Usabilidade e Acessibilidade:** navegação por teclado (`Tab`, `Esc`), foco visível, contraste WCAG AA, rótulos e máscaras de formulário;
-     - **Responsividade real:** comportamento em mobile (`360px–390px`) vs. desktop (`1280px–1920px`).
-3. **Alinhe o uso de Figma sem travar o usuário:**
-   - Pergunte se há link/destino no Figma MCP ou se o usuário autoriza seguir direto para `DESIGN.md` / `/styleguide.html` e código nesta tarefa.
-4. **Ofereça executar direto na pasta ou gerar o prompt estruturado de implementação/refatoração.**
+### Como conduzir (Criar, Redesenhar ou Editar/Ajustar Telas):
+1. **Inspecione o front-end atual:** framework, `skills-lock.json`, `DESIGN.md`, `tokens.css` e componentes existentes.
+2. **Aplique a lógica de [product-ui-system.md](../../frontend-figma-playwright/references/product-ui-system.md) + [landing-page.md](../../frontend-figma-playwright/references/landing-page.md):**
+   - **Creative North Star (Metáfora Funcional):** toda tela ou sistema precisa de uma identidade ligada ao domínio (ex.: *"Livro-razão vivo"* para finanças, *"Caderno de treino contemporâneo"* para academia), onde **a próxima ação vem antes do histórico**.
+   - **Tokens Estritos (`tokens.css`) + Contraste AA Calculado:** zero hex solto ou cor default do Tailwind (`blue-500`, `emerald-500`, `gray-100`). Um único acento de ação; verde/âmbar/vermelho só para estados, sempre com **Forma (ícone) + Texto + Cor**.
+   - **Tipografia Tripla + `font-data` (`tabular-nums`):** números sempre acompanhados de unidade e período.
+   - **Recompor no Mobile (não apenas encolher):** barra inferior no mobile (`< 640px`) + sidebar no desktop (`≥ 1024px`), inputs `≥ 16px`, alvos `≥ 44px`, estados completos (`Empty`, `Loading/Skeleton`, `Error inline` com `role="alert"`).
+   - **Motion de Produto e Anti-Slop:** seleção troca na hora (sem flick de transição de cor em abas/chips), clique com `scale(0.97)` em `120ms`, zero gradiente roxo-azul, zero emoji como ícone e zero travessão longo (`—`).
+   - **Skills externas recomendadas:** quando for redesign ou criação de sistema, lembre o usuário dos pacotes de `taste-skill`, `ui-ux-pro-max-skill` e `design-motion-principles`.
+3. **Alinhe o uso de Figma sem travar o usuário** e ofereça **executar direto na pasta** ou **gerar o prompt completo** de [prompt-templates.md](prompt-templates.md).
 
 ---
 

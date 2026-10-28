@@ -43,28 +43,43 @@ Leia [CAMINHO_DO_KIT]/skills/project-workflow/SKILL.md e [CAMINHO_DO_KIT]/skills
 
 ---
 
-## 3. Molde para `/frontend` — CRIAR Aplicação Web / Dashboard / Painel / Fluxo Complexo
+## 3. Molde para `/frontend` — CRIAR ou REDESENHAR Telas, Sistemas, Dashboards e Apps (Padrão `product-ui-system.md`)
 
-Quando o pedido em `/frontend` for um **sistema, painel administrativo, CRM, portal ou fluxo de produto** (e não uma landing page promocional):
+Quando o pedido em `/frontend` for criar, redesenhar ou elevar o nível de telas de um sistema/aplicação (como no padrão usado em `FinanceHub` e `GymHub`):
 
 ```markdown
-Leia [CAMINHO_DO_KIT]/skills/project-workflow/SKILL.md, [CAMINHO_DO_KIT]/skills/frontend-figma-playwright/SKILL.md e [CAMINHO_DO_KIT]/skills/project-workflow/references/validation.md.
+Leia [CAMINHO_DO_KIT]/skills/project-workflow/SKILL.md, [CAMINHO_DO_KIT]/skills/frontend-figma-playwright/SKILL.md, [CAMINHO_DO_KIT]/skills/frontend-figma-playwright/references/product-ui-system.md, [CAMINHO_DO_KIT]/skills/frontend-figma-playwright/references/landing-page.md e [CAMINHO_DO_KIT]/skills/project-workflow/references/validation.md.
 
-## OBJETIVO DO SISTEMA / FLUXO FRONT-END
-- Produto e perfil de uso: [ex.: Painel operacional de uso diário — priorizar clareza, densidade controlada, velocidade e atalhos de teclado sobre animações longas]
-- Stack: [stack existente preservada ou stack definida]
-- Figma: [link do arquivo Figma MCP | autorizado documentar tokens em `DESIGN.md` + `/styleguide.html` e seguir para o código]
+(Opcional, se ainda não instaladas no projeto):
+npx skills add https://github.com/Leonxlnx/taste-skill
+npx skills add https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
+npx skills add https://github.com/kylezantos/design-motion-principles
 
-## TELAS, COMPONENTES E ESTADOS OBRIGATÓRIOS
-Para cada tela/fluxo (`[listar telas]`):
-1. **Estado Vazio (`Empty State`):** instrução clara + CTA primário para criar o primeiro registro.
-2. **Estado Carregando (`Loading / Skeleton`):** preserva medidas sem layout shift (`CLS = 0`).
-3. **Estado com Dados (`Loaded`):** tabela/grid com `tabular-nums`, busca, filtros combináveis, paginação/ordenação e ações por linha.
-4. **Estado de Erro e Validação de Formulário:** mensagens inline com `role="alert"`, `aria-invalid`, preservação do que o usuário digitou e proteção contra duplo clique no submit.
-5. **Acessibilidade e Responsividade:** navegação completa por teclado (`Tab`, `Esc`, foco preso em modais/gavetas) e adaptação de `360px` a `1920px`.
+Quero que você atue simultaneamente como diretor de criação digital, designer de produto e UI/UX, desenvolvedor frontend sênior, especialista em motion, acessibilidade e performance, e revisor visual extremamente crítico.
 
-## VALIDAÇÃO
-- Execute `typecheck`, `build`, testes de componente e roteiro E2E com `Playwright` comprovando os fluxos principais e a ausência de erros de console.
+## CONTEXTO E DIREÇÃO CRIATIVA ("CREATIVE NORTH STAR")
+- Produto e Objetivo: [criar | redesenhar | ajustar] [nome do sistema / telas alvo]
+- Metáfora Funcional (*Creative North Star*): [ex.: "Livro-razão vivo" | "Caderno de treino contemporâneo" | "Mesa de operações limpa"]
+- Princípio de Hierarquia: **A próxima ação vem sempre antes do histórico e das métricas.**
+- Stack: [preservar stack existente | Vite + React + TS strict + Tailwind + Motion + Fontsource]
+- Figma: [link do arquivo Figma MCP | autorizado documentar em `DESIGN.md` + `tokens.css` e seguir direto para o código]
+
+## ETAPAS OBRIGATÓRIAS DE EXECUÇÃO
+1. **ETAPA 1 — INSPEÇÃO:** mapeie stack, rotas, componentes e o que deve ser preservado.
+2. **ETAPA 2 — DESIGN.md e `tokens.css` (Claro + Escuro):**
+   - Zero hex solto e zero cor default do Tailwind (`blue-500`, `emerald-500`, `gray-100`) nos componentes.
+   - Um único acento de ação (`action` / `primary`). Verde, âmbar e vermelho exclusivos para estados semânticos.
+   - **Estado = Forma (ícone) + Texto + Cor** (e diferenciação visual entre realizado/confirmado em traço sólido vs. previsto/pendente em traço pontilhado).
+   - **Tabela de Contraste WCAG AA (≥ 4,5:1)** calculada para cada token de texto sobre cada superfície (`bg`, `surface`, `subtle`, `selected`) no claro e no escuro.
+   - **Tipografia Tripla:** Display + UI + `font-data` (`tabular-nums`), sempre com unidade e janela de tempo nos números.
+3. **ETAPA 3 — IMPLEMENTATION_PLAN.md:** arquitetura, componentes e estratégia de responsividade.
+4. **ETAPA 4 — IMPLEMENTAÇÃO DAS TELAS E FLUXOS (`[listar telas/componentes]`):**
+   - **Recompor, não encolher:** layout próprio no mobile (`< 640px`, barra inferior / listas estruturadas, inputs `≥ 16px`, alvos `≥ 44px`) e sidebar/split no desktop (`≥ 1024px`).
+   - **Estados completos em cada tela:** `Empty State` útil com CTA, `Loading/Skeleton` sem layout shift, `Error inline` (`role="alert"`, `aria-invalid`, nunca só em toast).
+   - **Motion de produto:** seleção em abas/menus/filtros troca na hora (sem flick de transição de cor), feedback tátil `scale(0.97)` em `120ms`, `prefers-reduced-motion` respeitado.
+   - **Regras Anti-Slop:** zero gradiente roxo-azul, zero glassmorphism decorativo, zero emoji como ícone, zero travessão longo (`—`).
+5. **ETAPA 5 e 6 — VALIDAÇÃO PLAYWRIGHT + REVISÃO CRÍTICA:**
+   - Rode `typecheck`, `lint`, `test`, `build` e verifique com Playwright (claro + escuro, teclado `Tab`/`Esc`, e zero overflow horizontal de `360px` a `2560px`).
 ```
 
 ---
