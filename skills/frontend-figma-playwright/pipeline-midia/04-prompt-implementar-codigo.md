@@ -3,7 +3,8 @@
 Escolha abaixo o prompt que corresponde ao conceito do projeto (ou use o prompt gerado automaticamente pela entrevista de [02-prompt-gerar-midia.md](02-prompt-gerar-midia.md)):
 1. **Preset ARQ-A (Grade Estrutural Noturna)** — Advocacia, Consultoria, Finanças, Engenharia (`NAV-1 + HERO-1 + PORT-1 + SIGN-3 + METH-1 + TEAM-1`).
 2. **Preset ARQ-B (Editorial Orgânico & Tátil)** — Arquitetura, Interiores, Design Autoral (`NAV-2 + HERO-2 + PORT-2 + SIGN-1 + SIGN-2 + METH-2 + TEAM-2`).
-3. **Template Modular (Mix & Match)** — Para montar qualquer combinação personalizada de blocos de [01-catalogo-formas-e-animacoes.md](01-catalogo-formas-e-animacoes.md).
+3. **Preset ARQ-D (Boutique Editorial & Catálogo com Sacola WhatsApp)** — Moda Feminina, Ateliês, Joalheria, Social Commerce (`PORT-3` com vitrine `4:5`, tamanhos/cores, Guia de Medidas, Compre o Look e Sacola Lateral → WhatsApp).
+4. **Template Modular (Mix & Match)** — Para montar qualquer combinação personalizada de blocos de [01-catalogo-formas-e-animacoes.md](01-catalogo-formas-e-animacoes.md).
 
 ---
 
@@ -92,7 +93,25 @@ Valide `typecheck`, `build`, Playwright (`reducedMotion: 'no-preference'` e `'re
 
 ---
 
-## 3. Template Modular (Mix & Match para Qualquer Público)
+## 3. Preset ARQ-D — Boutique Editorial & Catálogo com Sacola WhatsApp (Ex.: Moda Feminina / Ateliê)
+
+```markdown
+Leia [CAMINHO_DO_KIT]/skills/project-workflow/SKILL.md, [CAMINHO_DO_KIT]/skills/frontend-figma-playwright/SKILL.md, [CAMINHO_DO_KIT]/skills/frontend-figma-playwright/references/landing-page.md, [CAMINHO_DO_KIT]/skills/frontend-figma-playwright/references/scroll-motion.md e [CAMINHO_DO_KIT]/skills/project-workflow/references/conformidade-legal.md e aplique esse fluxo neste projeto.
+
+Objetivo: Criar a landing page com catálogo interativo e sacola de compras integrada ao WhatsApp usando o **Arquétipo ARQ-D (Boutique Editorial & Catálogo com Sacola WhatsApp)**, consumindo os ativos locais em **AVIF + WebP** (`public/media/`).
+
+## MECÂNICA OBRIGATÓRIA DE CATÁLOGO E SACOLA (`PORT-3`)
+- **Catálogo (`src/data/products.ts`):** 12 produtos em proporção `4:5` com foto principal (`prod-XX-a.{avif,webp}`) e 2ª foto de hover/detalhe (`prod-XX-b.{avif,webp}`), SKU, preço, parcelamento/Pix, cores (`ColorOption[]`), tamanhos (`PP` a `GG`) com estoque por tamanho e tabela de medidas (`busto`, `cintura`, `quadril`, `comprimento`).
+- **Vitrine (`ProductGrid.tsx` + `ProductCard.tsx`):** Filtro por categoria com pílula animada (`layoutId`) + filtro por tamanho + troca para 2ª foto no hover + adição rápida por tamanho disparando `BagToast` no topo.
+- **Detalhe do Produto (`ProductDetail.tsx`):** Galeria `4:5`, seletor de Cor e Tamanho, **Guia de Medidas (tabela cm)**, composição do tecido e botões `"Adicionar à Sacola"` e `"Tirar dúvida no WhatsApp"`.
+- **Compre o Look (`ShopTheLook.tsx`):** Foto editorial (`lookbook-full.{avif,webp}`) com as 3 peças coordenadas e botão para adicionar o look completo à sacola com desconto.
+- **Sacola Lateral (`BagDrawer.tsx` + `src/lib/shop.tsx` + `src/lib/whatsapp.ts`):** Persistida em `localStorage`, diferencia linhas por `slug + size + color`, inclui controle `- / +`, barra de progresso de **Frete Grátis**, opção de pagamento preferido (Pix com desconto ou Cartão) e botão **"Finalizar Pedido pelo WhatsApp"** que gera o link `https://wa.me/` listando cada item (`quantidade × nome + SKU + tamanho + cor + subtotal`), total e status de frete grátis.
+- **Higiene de Mídia e Testes:** Use `<picture>` (`image/avif` + `image/webp`) com `?v=${MEDIA_VERSION}`, cubra reducer da sacola e formatação da mensagem de WhatsApp com `Vitest` (`npm test`) e valide o fluxo completo com `Playwright`.
+```
+
+---
+
+## 4. Template Modular (Mix & Match para Qualquer Público)
 
 ```markdown
 Leia [CAMINHO_DO_KIT]/skills/project-workflow/SKILL.md, [CAMINHO_DO_KIT]/skills/frontend-figma-playwright/SKILL.md, [CAMINHO_DO_KIT]/skills/frontend-figma-playwright/references/landing-page.md, [CAMINHO_DO_KIT]/skills/frontend-figma-playwright/references/scroll-motion.md, [CAMINHO_DO_KIT]/skills/frontend-figma-playwright/pipeline-midia/01-catalogo-formas-e-animacoes.md e [CAMINHO_DO_KIT]/skills/project-workflow/references/conformidade-legal.md e aplique esse fluxo neste projeto.
