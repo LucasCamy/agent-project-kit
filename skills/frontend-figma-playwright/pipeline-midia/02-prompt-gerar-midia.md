@@ -24,7 +24,8 @@ Apresente as 6 perguntas abaixo de forma limpa para eu responder rapidamente (po
 2. **Arquétipo Visual e Estrutura da Página:**
    - **[ARQ-A] Grade Estrutural Noturna:** Fundo escuro `#0A0A0B`, fios de `1px`, retrato em chiaroscuro + 4 pilares, bento xadrez `01–06`, sequência de 120 quadros no `<canvas>`, linha horizontal `01–04` e 3 sócios P&B → cor.
    - **[ARQ-B] Editorial Orgânico & Tátil:** Fundo claro linho/travertino `#F2EFE9` + galeria horizontal escura `#191815` com cursor `"ARRASTE"`, régua lateral `01 / 06`, Hero fullscreen que encolhe com scroll para virar foto no Manifesto, cortina Antes ↔ Depois (`Croqui anotado à mão` ↔ `Obra Entregue` no mesmo ângulo), mesa tátil de 6 materiais/amostras e processo com coluna esquerda fixa + 6 etapas verticais.
-   - **[CUSTOM] Mix & Match:** Escolher separadamente Hero (`HERO-1/2/3`), Portfólio (`PORT-1/2`), Cena-Assinatura (`SIGN-1: Cortina Antes/Depois`, `SIGN-2: Mesa de Amostras`, `SIGN-3: 120 quadros no Canvas`), Método (`METH-1/2`) e Equipe (`TEAM-1/2`).
+   - **[ARQ-D] Boutique Editorial & Catálogo com Sacola WhatsApp (`PORT-3`):** Fundo creme/linho `#FAF6F0`, vitrine de produtos em proporção `4:5` com **2 fotos por produto** (`prod-01-a` frente e `prod-01-b` detalhe/caimento no hover), seção *"Compre o Look"* (`lookbook-full`), processo de ateliê (`atelier-process`), retrato da criadora (`founder-portrait`), sequência `<canvas>` de croqui para peça pronta e Sacola Lateral que fecha o pedido completo no WhatsApp.
+   - **[CUSTOM] Mix & Match:** Escolher separadamente Hero (`HERO-1/2/3`), Portfólio (`PORT-1/2/3`), Cena-Assinatura (`SIGN-1: Cortina Antes/Depois`, `SIGN-2: Mesa de Amostras`, `SIGN-3: 120 quadros no Canvas`), Método (`METH-1/2`) e Equipe (`TEAM-1/2`).
 3. **Cenas das 4 Imagens Principais (ou diga "sugira você para o meu nicho"):**
    - Imagem 1 (`hero-main`):
    - Imagem 2 (`section-editorial`):
@@ -40,7 +41,9 @@ Apresente as 6 perguntas abaixo de forma limpa para eu responder rapidamente (po
 ---
 
 ### PASSO 2 — O QUE VOCÊ DEVE FAZER AUTOMATICAMENTE ASSIM QUE EU RESPONDER:
-1. **Gerar as 4 imagens principais** seguindo a proporção e o respiro para tipografia do arquétipo escolhido.
+1. **Gerar as imagens principais e (se for `ARQ-D`) as fotos do catálogo `4:5`** seguindo a proporção e a mesma temperatura de luz natural do arquétipo escolhido:
+   - Nos arquétipos `ARQ-A`, `ARQ-B` e `ARQ-C`: `hero-main`, `section-editorial`, `bento-01..03`, `team-01..03`, `contact-space` e `sketch-before` (quando usar cortina Antes/Depois).
+   - No arquétipo `ARQ-D` (Catálogo + Sacola WhatsApp): além das fotos editoriais (`hero-main`, `lookbook-full`, `atelier-process`, `founder-portrait`, `sketch-before`), gere **8 pares de fotos de produto em proporção `4:5` (`1000×1250`)**: `prod-01-a.{avif,webp}` (frente) e `prod-01-b.{avif,webp}` (2ª foto para troca no hover/detalhe) até `prod-08-a/b`.
 2. **Montar o pacote completo na pasta de destino** usando Python (Pillow/NumPy) + `ffmpeg`:
    - Salvar **todas** as imagens estáticas em **dois formatos: `.avif` (primário, exigido pelo Claude) e `.webp` (fallback)** (`hero-main`, `section-editorial`, `bento-01..03`, `team-01..03`, `contact-space`, e `sketch-before` quando usar cortina Antes/Depois).
    - **Proibido baixar vídeos aleatórios de bancos gratuitos apenas pelo nome na URL.** Gere `canvas-sequence.mp4` (`1024×576`, 5s, 24fps, sem áudio) e `hero-ambient.mp4` por script Python + `ffmpeg` diretamente a partir das imagens autorais do projeto.

@@ -93,20 +93,40 @@ Valide `typecheck`, `build`, Playwright (`reducedMotion: 'no-preference'` e `'re
 
 ---
 
-## 3. Preset ARQ-D — Boutique Editorial & Catálogo com Sacola WhatsApp (Ex.: Moda Feminina / Ateliê)
+## 3. Preset ARQ-D — Boutique Editorial & Catálogo com Sacola WhatsApp (Ex.: Moda Feminina / Ateliê / Joalheria)
 
 ```markdown
 Leia [CAMINHO_DO_KIT]/skills/project-workflow/SKILL.md, [CAMINHO_DO_KIT]/skills/frontend-figma-playwright/SKILL.md, [CAMINHO_DO_KIT]/skills/frontend-figma-playwright/references/landing-page.md, [CAMINHO_DO_KIT]/skills/frontend-figma-playwright/references/scroll-motion.md e [CAMINHO_DO_KIT]/skills/project-workflow/references/conformidade-legal.md e aplique esse fluxo neste projeto.
 
+Atue simultaneamente como diretor de criação de moda/boutique digital, designer de UI/UX sênior, engenheiro frontend React 19 + TypeScript + Tailwind CSS v4 + Motion/GSAP, especialista em conversão de social commerce (Catálogo → Sacola → WhatsApp) e revisor visual extremamente crítico.
+
 Objetivo: Criar a landing page com catálogo interativo e sacola de compras integrada ao WhatsApp usando o **Arquétipo ARQ-D (Boutique Editorial & Catálogo com Sacola WhatsApp)**, consumindo os ativos locais em **AVIF + WebP** (`public/media/`).
 
-## MECÂNICA OBRIGATÓRIA DE CATÁLOGO E SACOLA (`PORT-3`)
-- **Catálogo (`src/data/products.ts`):** 12 produtos em proporção `4:5` com foto principal (`prod-XX-a.{avif,webp}`) e 2ª foto de hover/detalhe (`prod-XX-b.{avif,webp}`), SKU, preço, parcelamento/Pix, cores (`ColorOption[]`), tamanhos (`PP` a `GG`) com estoque por tamanho e tabela de medidas (`busto`, `cintura`, `quadril`, `comprimento`).
-- **Vitrine (`ProductGrid.tsx` + `ProductCard.tsx`):** Filtro por categoria com pílula animada (`layoutId`) + filtro por tamanho + troca para 2ª foto no hover + adição rápida por tamanho disparando `BagToast` no topo.
-- **Detalhe do Produto (`ProductDetail.tsx`):** Galeria `4:5`, seletor de Cor e Tamanho, **Guia de Medidas (tabela cm)**, composição do tecido e botões `"Adicionar à Sacola"` e `"Tirar dúvida no WhatsApp"`.
-- **Compre o Look (`ShopTheLook.tsx`):** Foto editorial (`lookbook-full.{avif,webp}`) com as 3 peças coordenadas e botão para adicionar o look completo à sacola com desconto.
-- **Sacola Lateral (`BagDrawer.tsx` + `src/lib/shop.tsx` + `src/lib/whatsapp.ts`):** Persistida em `localStorage`, diferencia linhas por `slug + size + color`, inclui controle `- / +`, barra de progresso de **Frete Grátis**, opção de pagamento preferido (Pix com desconto ou Cartão) e botão **"Finalizar Pedido pelo WhatsApp"** que gera o link `https://wa.me/` listando cada item (`quantidade × nome + SKU + tamanho + cor + subtotal`), total e status de frete grátis.
-- **Higiene de Mídia e Testes:** Use `<picture>` (`image/avif` + `image/webp`) com `?v=${MEDIA_VERSION}`, cubra reducer da sacola e formatação da mensagem de WhatsApp com `Vitest` (`npm test`) e valide o fluxo completo com `Playwright`.
+## MODO DE EXECUÇÃO
+- Execute todas as etapas (Inspeção → organização de `public/media/` em AVIF+WebP → `AGENTS.md` → `DESIGN.md` → `IMPLEMENTATION_PLAN.md` → `/styleguide.html` → Implementação completa → Testes unitários `Vitest` → Validação E2E e screenshots com `Playwright` → `Dockerfile` + `docker-compose.yml`) sem parar em decisões técnicas ou visuais razoáveis.
+- [Se autorizar dispensa do Figma nesta tarefa: Caso o Figma MCP não esteja conectado nesta sessão, fica autorizado documentar em `FIGMA_GUIDE.md` + `design/tokens.json` + `/styleguide.html` e seguir direto para o código.]
+
+## 1. DIREÇÃO VISUAL E PALETA (BOUTIQUE CONTEMPORÂNEA)
+- **Paleta (contraste WCAG AA ≥ 4.5:1):** Fundo principal linho/creme `#FAF6F0`, superfície marfim `#FFFDF9`, divisórias areia `#E2D5C1`, texto expresso `#2C221E`, texto secundário `#6B584C`, acento principal terracota `#9E4730`, sálvia `#6E8268`, manteiga `#F2D479` e verde WhatsApp `#2F6B48`.
+- **Tipografia (Fontsource):** Serifada editorial elegante com *itálicos expressivos* nos títulos e nomes de peças + sans limpa com `tabular-nums` para preços, tamanhos e contadores + nota discreta para SKUs/etiquetas.
+
+## 2. MECÂNICA OBRIGATÓRIA DE CATÁLOGO E SACOLA (`PORT-3`)
+- **Modelo de Produto (`src/data/products.ts`):** 12 produtos distribuídos em 5 categorias com `id`, `sku`, `name`, `slug`, `category`, `alsoIn`, `price`, `compareAtPrice`, parcelamento/Pix, `image` (`prod-XX-a.{avif,webp}` em `4:5`), `gallery` (`prod-XX-a` e `prod-XX-b` para hover/detalhe), `colors` (`ColorOption[]`), `sizes` (`PP`, `P`, `M`, `G`, `GG` com disponibilidade por tamanho), `measurements` (Busto, Cintura, Quadril e Comprimento em `cm` + nota da modelo), `fabric`, `availability` (`'pronta-entrega' | 'sob-medida' | 'esgotado'`) e `badge`.
+- **Cards da Vitrine (`ProductGrid.tsx` + `ProductCard.tsx`):**
+  - Filtro de categoria com pílula animada (`layoutId`) + filtro rápido por tamanho disponível + ordenação.
+  - Proporção `4:5` com `<picture>` (`image/avif` + `image/webp` + `?v=${MEDIA_VERSION}`), troca automática para a 2ª foto (`prod-XX-b`) no hover e zoom suave `1.035`.
+  - Seletor de cores (`ColorSwatches`) e **Quick-Add por Tamanho** direto no card, disparando o `BagToast` flutuante no topo (`"[Peça] (Tam. M · [Cor]) na sacola — [Ver sacola]"`).
+- **Modal / Gaveta de Detalhe (`ProductDetail.tsx`):**
+  - Galeria `4:5` com miniaturas, seletor de Cor e Tamanho, **Guia de Medidas interativo (tabela cm)**, composição do tecido, botão `"Adicionar à Sacola"` (que já abre a sacola) e botão `"Tirar dúvida desta peça no WhatsApp"`.
+- **Compre o Look Completo (`ShopTheLook.tsx`):**
+  - Foto editorial (`lookbook-full.{avif,webp}`) com as 3 peças que compõem o look, seleção rápida de tamanhos e botão `"Adicionar Look Completo à Sacola"` com desconto de combo.
+- **Sacola Lateral (`BagDrawer.tsx` + `src/lib/shop.tsx` + `src/lib/whatsapp.ts`):**
+  - Persistida em `localStorage`, diferenciando linhas por `slug + size + color`, com controle de quantidade (`- / +`) e remoção.
+  - **Barra de progresso de Frete Grátis** (`"Faltam R$ X para o frete grátis"` → `"Seu pedido ganhou Frete Grátis"`).
+  - Opção rápida de forma de pagamento preferida (`Pix com 5% OFF` | `Cartão até 6x`) e campos opcionais de Nome/CEP.
+  - Botão principal **"Finalizar Pedido pelo WhatsApp"** que abre `https://wa.me/` com a mensagem completa estruturada (lista de itens com `quantidade × nome + SKU + tamanho + cor + subtotal`, desconto Pix, status de frete grátis e total).
+- **12 Seções Completas:** Topbar + Navbar com contador da sacola → Hero Editorial (`hero-main` + `hero-ambient.mp4`) → Faixa de 4 Garantias → Categorias Visuais → Vitrine Interativa (`ProductGrid`) → Compre o Look (`ShopTheLook`) → Do Croqui ao Caimento (`sketch-before` + `<canvas>` / etapas do ateliê) → Consultoria de Styling / Sob Medida (`CustomStylingSection`) → Sobre a Marca (`founder-portrait`) → Depoimentos com altura/tamanho vestido → FAQ WAI-ARIA → Rodapé LGPD + `WhatsAppButton` + `/styleguide.html`.
+- **Testes e Validação:** Cubra o reducer da sacola (`slug + size + color`), barra de frete grátis e formatação da mensagem de WhatsApp com `Vitest` (`npm test`), e valide todo o fluxo e as 7 larguras responsivas com `Playwright`.
 ```
 
 ---

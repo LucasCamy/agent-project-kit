@@ -11,7 +11,7 @@ O objetivo desta skill é evitar dois extremos ruins:
 1. **Obediência cega:** sair codando ou aplicando regras rígidas sem entender se aquilo faz sentido para o momento do projeto.
 2. **Interrogatório burocrático:** fazer dezenas de perguntas genéricas sem antes olhar os arquivos da pasta e sem recomendar caminhos concretos.
 
-Consulte [references/playbooks.md](references/playbooks.md) para os roteiros específicos de cada área (`/landingpage`, `/frontend`, `/backend`, `/database` e `/review`) tanto para **criação do zero** quanto para **edição/ajuste de projeto existente**.
+Consulte [references/playbooks.md](references/playbooks.md) para os roteiros específicos de cada área (`/landingpage`, `/frontend`, `/backend`, `/database` e `/review`) tanto para **criação do zero** quanto para **edição/ajuste de projeto existente**, e use obrigatoriamente [references/prompt-templates.md](references/prompt-templates.md) sempre que o usuário pedir para gerar os prompts prontos.
 
 ---
 
