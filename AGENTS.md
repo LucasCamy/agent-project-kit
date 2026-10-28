@@ -1,6 +1,6 @@
 # Instruções para manter Agent Project Kit
 
-Este repositório contém documentação Markdown e oito skills em `skills/`. A entrada é `skills/project-workflow/SKILL.md`; regras comuns e matriz de validação ficam em suas referências.
+Este repositório contém documentação Markdown, nove skills em `skills/` e comandos interativos em `commands/`. A entrada técnica é `skills/project-workflow/SKILL.md` e a entrada consultiva/dinâmica é `skills/interactive-consultant/SKILL.md`; regras comuns e matriz de validação ficam nas referências de `project-workflow`.
 
 - Preserve a estrutura de pastas e os links relativos entre módulos. Resolva referências pela pasta do documento.
 - Centralize regras compartilhadas; mantenha módulos especializados curtos e fontes externas no catálogo.

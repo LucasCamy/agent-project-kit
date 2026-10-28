@@ -7,6 +7,8 @@ Comece pelo [README](README.md) para baixar o kit e enviar o primeiro pedido. Es
 | Arquivo ou pasta | Função |
 |---|---|
 | README deste kit | Apresentar o conteúdo e ensinar a começar |
+| commands/README.md | Comandos dinâmicos (`/landingpage`, `/frontend`, `/backend`, `/database`, `/review`, `/kit`) para criar, editar ou ajustar projetos |
+| skills/interactive-consultant/SKILL.md | Conduzir diagnóstico consultivo, sugerir melhorias e gerar prompts prontos ou implementar direto |
 | skills/project-workflow/SKILL.md | Orientar a execução e escolher módulos |
 | AGENTS.md da aplicação | Guardar convenções e instruções persistentes daquele projeto |
 | Referências dos módulos | Detalhar procedimentos quando a tarefa exigir |

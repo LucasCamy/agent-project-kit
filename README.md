@@ -2,9 +2,9 @@
 
 Um kit de instruções e skills para orientar agentes de desenvolvimento em projetos novos ou existentes: entender o repositório, criar e manter `AGENTS.md`, implementar mudanças e conferir o resultado.
 
-O ponto de entrada é **[project-workflow](skills/project-workflow/SKILL.md)**. Ele orienta a seleção dos módulos necessários conforme a tarefa.
+O ponto de entrada técnico é **[project-workflow](skills/project-workflow/SKILL.md)** e o modo dinâmico/interativo por comandos (`/landingpage`, `/frontend`, `/backend`, `/database`, `/review`, `/kit`) está em **[interactive-consultant](skills/interactive-consultant/SKILL.md)** e **[commands/](commands/README.md)**.
 
-[Começar](#começar-em-três-passos) · [O que tem](#o-que-tem-no-kit) · [Exemplos](#exemplos-de-pedido) · [Guia completo](GUIA_SKILLS_DESENVOLVIMENTO.md)
+[Começar](#começar-em-três-passos) · [Comandos Dinâmicos (`/`)](#modo-dinâmico-por-comandos-criar-editar-e-ajustar) · [O que tem](#o-que-tem-no-kit) · [Exemplos](#exemplos-de-pedido) · [Guia completo](GUIA_SKILLS_DESENVOLVIMENTO.md)
 
 ## Começar em três passos
 
@@ -45,6 +45,7 @@ O agente deve inspecionar o projeto, seguir as instruções locais, selecionar o
 
 | Módulo | Para que serve |
 |---|---|
+| [interactive-consultant](skills/interactive-consultant/SKILL.md) | **Modo dinâmico e consultivo:** diagnosticar pasta, sugerir melhorias, fazer perguntas cirúrgicas e escolher entre gerar prompts prontos ou executar direto (criar, editar ou ajustar) |
 | [project-workflow](skills/project-workflow/SKILL.md) | Entrada: inspecionar, selecionar módulos e integrar o resultado |
 | [project-agent-md](skills/project-agent-md/SKILL.md) | Criar e manter instruções estáveis do repositório |
 | [frontend-figma-playwright](skills/frontend-figma-playwright/SKILL.md) | Estruturar UI no Figma, implementar e conferir com screenshots |
@@ -54,7 +55,18 @@ O agente deve inspecionar o projeto, seguir as instruções locais, selecionar o
 | [agent-coordination](skills/agent-coordination/SKILL.md) | Dividir responsabilidades, revisar e fazer handoff quando útil |
 | [skill-discovery](skills/skill-discovery/SKILL.md) | Encontrar e avaliar skills externas para necessidades específicas |
 
-Há ainda [regras comuns](skills/project-workflow/references/common.md), uma [matriz de validação](skills/project-workflow/references/validation.md), [modelo e fluxo de ADR](skills/software-documentation/references/adr.md), [orientação de Linear](skills/project-workflow/references/linear.md), [prompt especializado de landing page](skills/frontend-figma-playwright/references/landing-page.md), [referência de animação ligada ao scroll](skills/frontend-figma-playwright/references/scroll-motion.md) (GSAP, ScrollTrigger e Lenis) e [pipeline passo a passo de mídia e scrollytelling](skills/frontend-figma-playwright/pipeline-midia/README.md).
+Há ainda [comandos interativos (`/landingpage`, `/frontend`, `/backend`, `/database`, `/review`, `/kit`)](commands/README.md), [regras comuns](skills/project-workflow/references/common.md), uma [matriz de validação](skills/project-workflow/references/validation.md), [modelo e fluxo de ADR](skills/software-documentation/references/adr.md), [orientação de Linear](skills/project-workflow/references/linear.md), [prompt especializado de landing page](skills/frontend-figma-playwright/references/landing-page.md), [referência de animação ligada ao scroll](skills/frontend-figma-playwright/references/scroll-motion.md) (GSAP, ScrollTrigger e Lenis) e [pipeline passo a passo de mídia e scrollytelling](skills/frontend-figma-playwright/pipeline-midia/README.md).
+
+## Modo dinâmico por comandos (Criar, Editar e Ajustar)
+
+Em vez de lembrar caminhos de arquivos ou montar prompts grandes manualmente, você pode instalar os comandos de **[commands/](commands/README.md)** com um único script (`./scripts/install-commands.ps1` ou `./scripts/install-commands.sh`) e digitar direto no agente:
+
+- **`/landingpage`** *(ou `/create-landing`)* — **Criar** uma landing page nova (scrollytelling ou catálogo com sacola no WhatsApp `ARQ-D`), **editar/ajustar** seções existentes, trocar mídias AVIF+WebP ou **gerar os 2 prompts prontos** (Mídia + Aplicação).
+- **`/frontend`** — **Criar, editar, ajustar ou refatorar** telas, componentes, estados (`loading`/`empty`/`error`) e responsividade com consultoria ativa de UX/UI.
+- **`/backend`** — **Criar, editar, ajustar ou otimizar** APIs, regras de negócio, contratos HTTP, autenticação e integrações apontando melhorias antes de tocar no código.
+- **`/database`** — **Criar, ajustar ou otimizar** schema, queries, índices, transações e migrations com revisão segura de SQL.
+- **`/review`** — **Auditar projeto existente** (UX/Playwright, conformidade legal LGPD, segurança, performance de mídia e documentação).
+- **`/kit`** — **Atalho universal:** analisa qualquer pasta (nova ou em andamento), conversa sobre o que fazer/melhorar e aciona apenas os módulos necessários.
 
 ## Exemplos de pedido
 
