@@ -26,4 +26,6 @@ Use [a matriz](../project-workflow/references/validation.md) para fechar evidên
 
 Para página contada pelo scroll (seções fixadas, scrub, scroll horizontal, sequência de quadros, scroll suave), leia [a referência de animação ligada ao scroll](references/scroll-motion.md). Ela orienta a escolha entre Motion e GSAP, a versão para movimento reduzido e a validação com as duas preferências. Quando a tarefa separar a geração de imagens, vídeos, quadros de `<canvas>` e `MEDIA_MANIFEST.json` da etapa de implementação do código, siga [o pipeline passo a passo de mídia e scrollytelling](pipeline-midia/README.md).
 
+Para travamentos na rolagem, em modais ou gavetas, ou animações que disparam antes de a pessoa chegar na seção, siga [a referência de fluidez e revelação por etapas](references/fluidez-e-revelacao.md): medir com os scripts do [kit](references/fluidez-kit/) antes e depois, corrigir pela causa medida e revelar por posição, só no compositor.
+
 Para uma ilustração isométrica que explique um conceito do produto, avalie [Anatomy como opção especializada](references/anatomy.md). Escolha pelo valor explicativo e pelo escopo; sua adoção preserva o fluxo Figma e a conferência no navegador.
