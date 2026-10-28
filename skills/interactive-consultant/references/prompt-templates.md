@@ -31,6 +31,11 @@ Você vai gerar o pacote completo de mídia otimizada (AVIF + WebP + MP4 + 120 q
 - **Se `ARQ-D` (Boutique Editorial & Catálogo com Sacola WhatsApp — ex.: Loja de Roupa Feminina / Ateliê):**
   - Editoriais: `hero-main.{avif,webp}` (`1920x1200`), `hero-ambient.mp4` (`1280x720`, 4.5s loop `xfade`), `lookbook-full.{avif,webp}` (`1200x1500`, `4:5` para *Compre o Look*), `atelier-process.{avif,webp}` (`1400x1050`), `founder-portrait.{avif,webp}` (`1200x1500`, `4:5`), `sketch-before.{avif,webp}` (`1024x576`) e `frames/frame_0001..0120.{avif,webp}` (`1024x576`, evolução do molde/croqui para a peça pronta).
   - **Catálogo `4:5` (`1000x1250`, 8 pares com Frente `-a` + Hover/Detalhe `-b` em `.avif` e `.webp`):** `prod-01-a.{avif,webp}` e `prod-01-b.{avif,webp}` até `prod-08-a/b` (descrever cada uma das 8 peças do nicho).
+- **Se `ARQ-E` (Precisão Clínica & Cuidado Humano — ex.: Odontologia / Fisioterapia / Estética Avançada):**
+  - Clínicos e Anatômicos: `hero-specialist.{avif,webp}` (`1200x1400` sobre fundo `#F2F5F9`), `hero-ambient.mp4` (`1280x720`, 4.5s loop `xfade`), `anatomy-top.{avif,webp}` + `anatomy-base.{avif,webp}` (`900x900`, para a montagem que se encaixa no scroll) + `anatomy-assembled.{avif,webp}` (`1200x1000`), `specialist-hands.{avif,webp}` (`1000x1200`), `clinic-reception.{avif,webp}` (`1600x1000`).
+  - **Leque de 5 Queixas/Casos (`4:5`, `800x1000`):** `case-01..05.{avif,webp}`.
+  - **Timeline Fixada de 4 Etapas (`4:5`, `1000x1250`):** `step-01-avaliacao.{avif,webp}`, `step-02-planejamento.{avif,webp}`, `step-03-procedimento.{avif,webp}`, `step-04-acompanhamento.{avif,webp}`.
+  - **Sequência `<canvas>` (`frames/frame_0001..0120.{avif,webp}`, `1024x576`):** escaneamento/planejamento 3D encaixando os eixos de precisão com pulso luminoso azul `#5B8DEF`.
 
 ## 3. REGRAS CRÍTICAS DE CODIFICAÇÃO E VALIDAÇÃO
 1. **Proibido usar `-f image2 frame_%04d.avif` em lote com `-still-picture 1`** (grava header `av1C` vazio que falha no Chrome/Edge). Codifique cada `.avif` individualmente num laço `for` com `-frames:v 1`.

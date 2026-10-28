@@ -4,7 +4,8 @@ Escolha abaixo o prompt que corresponde ao conceito do projeto (ou use o prompt 
 1. **Preset ARQ-A (Grade Estrutural Noturna)** — Advocacia, Consultoria, Finanças, Engenharia (`NAV-1 + HERO-1 + PORT-1 + SIGN-3 + METH-1 + TEAM-1`).
 2. **Preset ARQ-B (Editorial Orgânico & Tátil)** — Arquitetura, Interiores, Design Autoral (`NAV-2 + HERO-2 + PORT-2 + SIGN-1 + SIGN-2 + METH-2 + TEAM-2`).
 3. **Preset ARQ-D (Boutique Editorial & Catálogo com Sacola WhatsApp)** — Moda Feminina, Ateliês, Joalheria, Social Commerce (`PORT-3` com vitrine `4:5`, tamanhos/cores, Guia de Medidas, Compre o Look e Sacola Lateral → WhatsApp).
-4. **Template Modular (Mix & Match)** — Para montar qualquer combinação personalizada de blocos de [01-catalogo-formas-e-animacoes.md](01-catalogo-formas-e-animacoes.md).
+4. **Preset ARQ-E (Precisão Clínica & Cuidado Humano)** — Odontologia, Fisioterapia, Estética Avançada e Medicina (`SIGN-4` Leque de Casos + `SIGN-5` Montagem Anatômica no Scroll + `METH-3` Foto Fixada `01/04..04/04` + Triagem WhatsApp).
+5. **Template Modular (Mix & Match)** — Para montar qualquer combinação personalizada de blocos de [01-catalogo-formas-e-animacoes.md](01-catalogo-formas-e-animacoes.md).
 
 ---
 
@@ -131,7 +132,27 @@ Objetivo: Criar a landing page com catálogo interativo e sacola de compras inte
 
 ---
 
-## 4. Template Modular (Mix & Match para Qualquer Público)
+## 4. Preset ARQ-E — Precisão Clínica & Cuidado Humano (Ex.: Odontologia / Fisioterapia / Estética Avançada)
+
+```markdown
+Leia [CAMINHO_DO_KIT]/skills/project-workflow/SKILL.md, [CAMINHO_DO_KIT]/skills/frontend-figma-playwright/SKILL.md, [CAMINHO_DO_KIT]/skills/frontend-figma-playwright/references/landing-page.md, [CAMINHO_DO_KIT]/skills/frontend-figma-playwright/references/scroll-motion.md, [CAMINHO_DO_KIT]/skills/frontend-figma-playwright/references/product-ui-system.md e [CAMINHO_DO_KIT]/skills/project-workflow/references/conformidade-legal.md e aplique esse fluxo neste projeto.
+
+Objetivo: Criar a landing page scrollytelling para a **Área da Saúde (Odontologia, Fisioterapia, Estética Avançada ou Medicina)** usando o **Arquétipo ARQ-E (Precisão Clínica & Cuidado Humano)**, consumindo os ativos locais em **AVIF + WebP** (`public/media/`).
+
+## DIREÇÃO VISUAL E MECÂNICAS OBRIGATÓRIAS DESTE ARQUÉTIPO (ARQ-E)
+- **Superfícies e Tipografia Bicolor:** Fundo `#FFFFFF`, grandes containers arredondados em gelo clínico `#F2F5F9` (`rounded-[36px]`), títulos bicolores combinando `#0F172A` (principal) e `#8A94A6` (complemento na mesma frase), acento azul clínico `#5B8DEF` (ou sálvia clínico) e bloco final de Contato em azul-noturno `#0A0F1D`.
+- **1. Navbar + Dock Flutuante Fixo no Rodapé (`FloatingBottomDock`):** Pílula escura translúcida fixa na base da tela com avatar + chamada de triagem + botão `"Agendar avaliação →"`.
+- **2. Hero com Pílulas Flutuantes (`Hero.tsx`):** Container `#F2F5F9` com retrato `hero-specialist.{avif,webp}`, 2 pílulas flutuantes de especialização em parallax e contadores (`tabular-nums`).
+- **3. `"Com quais queixas me procuram"` — Leque de 5 Cards em Arco (`SIGN-4`):** 5 cards `4:5` (`case-01..05.{avif,webp}`) dispostos em arco inclinado (`-12°` a `+12°`) com controles `← 01 / 05 →` e abertura de detalhe clínico com botão para o WhatsApp.
+- **4. `"Tecnologia para cada caso clínico"` — Montagem Anatômica no Scroll (`SIGN-5`):** Peça superior (`anatomy-top`) desce e se encaixa sobre a base (`anatomy-base`) ou avança 120 quadros no `<canvas>` com `pin + scrub`, acendendo 4 quadrantes orbitais de técnicas ao redor.
+- **5. Procedimento-Assinatura + Trilho Horizontal (`01–05`):** Container `#F2F5F9` com marca d'água tipográfica gigante no fundo, imagem `anatomy-assembled`, métricas e trilho horizontal de 5 indicações com mini-triagem que envia o resumo para o WhatsApp.
+- **6. `"Do primeiro exame ao resultado"` — Foto Fixada que Troca `01/04` a `04/04` (`METH-3`):** Coluna esquerda fixada (`pin`) trocando automaticamente entre `step-01..04.{avif,webp}` conforme as 4 etapas da direita cruzam a leitura.
+- **7. Sobre o Especialista + FAQ Fixo + Contato Escuro (`#0A0F1D`):** Biografia com registro do conselho (`CRO / CREFITO / CRM`), FAQ WAI-ARIA (`01–07`) com card de dúvida no WhatsApp e bloco final `#0A0F1D` com `clinic-reception.{avif,webp}`, indicador `"● Aberto agora"` e modal de pré-agendamento estruturado para o WhatsApp.
+```
+
+---
+
+## 5. Template Modular (Mix & Match para Qualquer Público)
 
 ```markdown
 Leia [CAMINHO_DO_KIT]/skills/project-workflow/SKILL.md, [CAMINHO_DO_KIT]/skills/frontend-figma-playwright/SKILL.md, [CAMINHO_DO_KIT]/skills/frontend-figma-playwright/references/landing-page.md, [CAMINHO_DO_KIT]/skills/frontend-figma-playwright/references/scroll-motion.md, [CAMINHO_DO_KIT]/skills/frontend-figma-playwright/pipeline-midia/01-catalogo-formas-e-animacoes.md e [CAMINHO_DO_KIT]/skills/project-workflow/references/conformidade-legal.md e aplique esse fluxo neste projeto.

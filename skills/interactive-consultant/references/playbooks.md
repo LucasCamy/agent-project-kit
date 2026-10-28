@@ -20,6 +20,7 @@ Recursos relacionados:
    - **ARQ-B (Editorial Orgânico & Tátil):** Arquitetura, interiores, design autoral, gastronomia, estética premium (fundo linho `#F2EFE9`, Hero que encolhe para moldura, capítulo escuro na galeria horizontal, cortina Antes ↔ Depois e amostras táteis).
    - **ARQ-C (Showroom Técnico & Produto):** SaaS, hardware, indústria, saúde diagnóstica.
    - **ARQ-D (Boutique Editorial & Catálogo com Sacola WhatsApp):** Moda feminina, ateliês, joias, crochê, decoração e social commerce (`PORT-3`: vitrine `4:5` com 2ª foto no hover, filtros de categoria e tamanho, Guia de Medidas, Compre o Look e Sacola Lateral `localStorage` que monta o pedido completo no `https://wa.me/`).
+   - **ARQ-E (Precisão Clínica & Cuidado Humano — Saúde):** Odontologia, fisioterapia, estética avançada, dermatologia e medicina (superfícies `#FFFFFF` e blocos arredondados `#F2F5F9`, títulos bicolores `#0F172A` + `#8A94A6`, Hero com pílulas flutuantes, `SIGN-4` leque de 5 queixas em arco, `SIGN-5` montagem anatômica no scroll, `METH-3` foto fixada que troca `01/04..04/04` e bloco final de Contato em azul-noturno `#0A0F1D`).
 2. **Sugira melhorias práticas para o nicho** (ex.: barra de frete grátis na sacola, desconto Pix no resumo de WhatsApp, comparador Antes ↔ Depois do processo, vídeo ambiente com loop `xfade`).
 3. **Pergunte (3 a 5 itens com recomendação):**
    - Nome da marca/negócio, público e objetivo principal (ex.: pedido no WhatsApp vs. agendamento de reunião);
