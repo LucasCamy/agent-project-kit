@@ -4,16 +4,42 @@ Quando o usuário escolher a opção **"Gerar Prompt(s) Pronto(s)"** durante o a
 
 ---
 
-## 1. Molde para `/landingpage` — CRIAR Nova Landing Page (2 Prompts: Mídia + Aplicação)
+## 1. Molde para `/landingpage` — CRIAR Nova Landing Page (2 Prompts Já Preenchidos: Mídia + Aplicação)
 
-Sempre que for **criação de landing page**, entregue **2 blocos Markdown separados**:
-- **PASSO 1 — Prompt de Mídia (Enviar ao ChatGPT / Codex / Claude):** baseado em [02-prompt-gerar-midia.md](../../frontend-figma-playwright/pipeline-midia/02-prompt-gerar-midia.md), já preenchido com a estética do nicho, paleta, lista exata de arquivos `.avif` + `.webp`, vídeo `hero-ambient.mp4` com `xfade` de `0.5s`, 120 quadros de `<canvas>` codificados individualmente com `-frames:v 1` e (se for `ARQ-D`) os 8 pares de fotos `4:5` do catálogo (`prod-01-a/b` a `prod-08-a/b`).
-- **PASSO 2 — Prompt da Aplicação (Enviar ao Claude Code):** baseado no preset correspondente de [04-prompt-implementar-codigo.md](../../frontend-figma-playwright/pipeline-midia/04-prompt-implementar-codigo.md) (`ARQ-A`, `ARQ-B`, `ARQ-D` ou `Mix & Match`), contendo:
-  1. Leitura explícita das skills (`project-workflow`, `frontend-figma-playwright`, `landing-page.md`, `scroll-motion.md`, `conformidade-legal.md`);
-  2. Direção visual completa (paleta com hex e contraste AA, tipografia Fontsource, tom da marca);
-  3. Sequência detalhada de todas as seções e suas mecânicas interativas (10 técnicas de scroll ou catálogo + `BagDrawer` + `ShopTheLook` + `whatsapp.ts` no `ARQ-D`);
-  4. Higiene de mídia (`<picture>` `image/avif` + `image/webp`, `?v=${MEDIA_VERSION}`, sem `canvas-sequence.mp4` em `public/media/`);
-  5. Testes (`Vitest` + `Playwright` em 7 larguras + `reducedMotion`).
+Sempre que for **criação de landing page**, entregue **2 blocos Markdown completos e já preenchidos para o nicho do usuário** (não coloque questionários dentro do Prompt 1, pois você mesmo já alinhou o escopo com o usuário):
+
+### Bloco 1: PASSO 1 — Prompt para Gerar as Imagens e Vídeos (Enviar ao ChatGPT / Codex)
+
+```markdown
+Você vai gerar o pacote completo de mídia otimizada (AVIF + WebP + MP4 + 120 quadros de `<canvas>`) para a landing page de **[NOME E NICHO DO PROJETO]** seguindo o arquétipo **[ARQ-A | ARQ-B | ARQ-D]**.
+
+## 1. DIREÇÃO DE ARTE E FOTOGRAFIA
+- **Estética e Iluminação:** [Descrever iluminação, atmosfera e referências visuais do arquétipo]
+- **Paleta dominante nas fotos:** [Listar cores hex do arquétipo]
+- **PROIBIÇÕES:** Nunca use vídeos de banco baixados às cegas por URL, marcas d'água, textos sobrepostos ou iluminação neon artificial.
+
+## 2. LISTA DE ARQUIVOS OBRIGATÓRIOS EM `./media/` (TODOS EM `.avif` E `.webp`)
+[Preencher conforme o arquétipo escolhido:]
+- **Se `ARQ-A` (Grade Estrutural Noturna — ex.: Advocacia / Consultoria):**
+  - `hero-main.{avif,webp}` (`1920x1200`), `section-editorial.{avif,webp}` (`1400x1050`), `bento-01-architecture.{avif,webp}`, `bento-02-detail.{avif,webp}`, `bento-03-library.{avif,webp}`, `team-01..03.{avif,webp}` (`960x1200`), `contact-space.{avif,webp}` (`1600x1000`).
+  - `hero-ambient.mp4` (`1280x720`, 4.5s loop contínuo com `xfade` de `0.5s`, `CRF 24`, `-movflags +faststart`, `-an`).
+  - `frames/frame_0001.{avif,webp}`..`frame_0120.{avif,webp}` (`1024x576`, 24 fps): travessia cinematográfica em chiaroscuro conectando as cenas autorais com varredura de feixe de luz lateral.
+- **Se `ARQ-B` (Editorial Orgânico & Tátil — ex.: Arquitetura / Design):**
+  - Mesmas fotos editoriais em atmosfera clara de linho/travertino `#F2EFE9` + **`sketch-before.{avif,webp}` (`1024x576`)** com croqui arquitetônico traçado à mão perfeitamente alinhado ao ângulo de `hero-main`.
+  - `hero-ambient.mp4` (`1280x720`, 4.5s loop com `xfade` de `0.5s`, brisa na vegetação e reflexo d'água).
+  - `frames/frame_0001.{avif,webp}`..`frame_0120.{avif,webp}` (`1024x576`, 24 fps): Quadros 001–035 (croqui em papel linho ganhando linhas de construção) ➔ Quadros 036–085 (varredura diagonal dourada revelando a obra construída) ➔ Quadros 086–120 (obra iluminada com reflexo vivo).
+- **Se `ARQ-D` (Boutique Editorial & Catálogo com Sacola WhatsApp — ex.: Loja de Roupa Feminina / Ateliê):**
+  - Editoriais: `hero-main.{avif,webp}` (`1920x1200`), `hero-ambient.mp4` (`1280x720`, 4.5s loop `xfade`), `lookbook-full.{avif,webp}` (`1200x1500`, `4:5` para *Compre o Look*), `atelier-process.{avif,webp}` (`1400x1050`), `founder-portrait.{avif,webp}` (`1200x1500`, `4:5`), `sketch-before.{avif,webp}` (`1024x576`) e `frames/frame_0001..0120.{avif,webp}` (`1024x576`, evolução do molde/croqui para a peça pronta).
+  - **Catálogo `4:5` (`1000x1250`, 8 pares com Frente `-a` + Hover/Detalhe `-b` em `.avif` e `.webp`):** `prod-01-a.{avif,webp}` e `prod-01-b.{avif,webp}` até `prod-08-a/b` (descrever cada uma das 8 peças do nicho).
+
+## 3. REGRAS CRÍTICAS DE CODIFICAÇÃO E VALIDAÇÃO
+1. **Proibido usar `-f image2 frame_%04d.avif` em lote com `-still-picture 1`** (grava header `av1C` vazio que falha no Chrome/Edge). Codifique cada `.avif` individualmente num laço `for` com `-frames:v 1`.
+2. **Loop sem salto em `hero-ambient.mp4`:** use `xfade=transition=fade:duration=0.5:offset=4.5`.
+3. Inspecione visualmente os quadros `0010`, `0060` e `0110` e gere `MEDIA_MANIFEST.json` com `"status": "ready"`.
+```
+
+### Bloco 2: PASSO 2 — Prompt para Implementar a Aplicação Completa (Enviar ao Claude Code)
+- Preencha integralmente o preset correspondente de [04-prompt-implementar-codigo.md](../../frontend-figma-playwright/pipeline-midia/04-prompt-implementar-codigo.md) (`ARQ-A`, `ARQ-B`, `ARQ-D` ou `Mix & Match`), adaptado com o nome, paleta, seções, produtos/serviços e regras de validação do projeto.
 
 ---
 
