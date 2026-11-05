@@ -25,7 +25,9 @@ Se você quer criar uma nova landing page sem preencher dezenas de campos manual
 | [01-catalogo-formas-e-animacoes.md](01-catalogo-formas-e-animacoes.md) | **Catálogo Mix & Match:** 3 arquétipos visuais, formas de seção (`NAV`, `HERO`, `PORT`, `SIGN`, `METH`, `TEAM`) e 10 técnicas de scroll |
 | [02-prompt-gerar-midia.md](02-prompt-gerar-midia.md) | **Prompt Mestre Semi-Automático (entrevista)** + prompts por arquétipo e consolidação com Python + `ffmpeg` |
 | [03-schema-media-manifest.md](03-schema-media-manifest.md) | Contrato do `MEDIA_MANIFEST.json`, comandos `ffmpeg` corretos (AVIF quadro a quadro e loop `xfade`) e cache busting |
-| [04-prompt-implementar-codigo.md](04-prompt-implementar-codigo.md) | Prompts padronizados para o agente de código (`Preset ARQ-A`, `Preset ARQ-B` e `Template Modular`) |
+| [04-prompt-implementar-codigo.md](04-prompt-implementar-codigo.md) | Prompts padronizados para o agente de código (`Preset ARQ-A`, `Preset ARQ-B`, `Preset ARQ-D`, `Preset ARQ-E` e `Template Modular`) |
+| [exemplos-prontos/loja-roupa-sacola-whatsapp.md](exemplos-prontos/loja-roupa-sacola-whatsapp.md) | **Exemplo Completo Pronto (`ARQ-D`):** Passo 1 (Mídia + Catálogo `4:5`) e Passo 2 (Código) para Loja de Roupa Feminina com Sacola no WhatsApp |
+| [exemplos-prontos/saude-fisioterapia-odonto.md](exemplos-prontos/saude-fisioterapia-odonto.md) | **Exemplo Completo Pronto (`ARQ-E`):** Passo 1 (Mídia) e Passo 2 (Código) para Área da Saúde (Fisioterapia, Odontologia e Clínicas) |
 
 ---
 
