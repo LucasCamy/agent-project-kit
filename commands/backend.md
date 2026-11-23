@@ -14,3 +14,11 @@ Pedido ou contexto inicial do usuário: `$ARGUMENTS`
    - Preserve a arquitetura existente sem impor padrões artificiais (Repository/CQRS/Mediator) onde não houver necessidade.
    - Aponte proativamente **o que pode melhorar ou dar problema** no que foi pedido: contrato de entrada/saída, códigos de erro (`ProblemDetails`), autorização, idempotência, concorrência, timeouts e impacto em consumidores existentes.
 3. **Faça até 3–4 perguntas técnicas/de negócio (com recomendação padrão)** e pergunte se deve **Implementar e Testar Direto Aqui** ou **Gerar o Prompt/Plano Técnico** para execução.
+
+## Se a stack não for .NET (Node, Python, outra)
+O módulo dedicado do kit é .NET. Para outras stacks, **não** aplique padrões .NET. Use as mesmas perguntas de contrato e risco, adaptadas:
+- **Contrato e validação na fronteira:** schema de entrada/saída (ex.: Zod, JSON Schema, Pydantic) e formato de erro único.
+- **Async e falhas:** timeout, cancelamento (`AbortSignal` em Node) e retries só onde forem seguros.
+- **Dependências:** preserve o gerenciador e as versões do projeto (`package-lock.json`, `pnpm-lock.yaml`, `poetry.lock`).
+- **Testes:** use o runner já configurado (ex.: `node --test`, Vitest, Jest, pytest). Se não houver, registre isso; não invente script.
+- **Se chamar um LLM:** siga [../skills/project-workflow/references/llm-app.md](../skills/project-workflow/references/llm-app.md).

@@ -32,9 +32,18 @@ Apresente um diagnóstico curto e direto (3 a 5 tópicos):
 Faça **no máximo 3 a 5 perguntas** sobre decisões que mudam o trabalho.
 - Para cada pergunta, traga sempre uma **recomendação pronta** entre parênteses — assim o usuário pode tanto personalizar quanto responder apenas *"Pode seguir com as recomendações"*.
 - Se o usuário estiver **editando ou ajustando** algo específico (ex.: *"quero mudar a seção de projetos"* ou *"ajuste o carrinho para ter tamanho"*), pergunte apenas sobre o comportamento desejado daquele ponto e o que deve permanecer intacto.
+- Se o projeto declarar um [perfil de comunicação](../project-workflow/references/common.md#perfil-de-comunicação), siga-o. Ex.: para TDAH/dislexia, use a ferramenta de perguntas de escolha múltipla do agente (recomendação como primeira opção), frases curtas e uma decisão por vez.
+- Se o usuário já respondeu às decisões (no pedido, no briefing ou no AGENTS.md), **não pergunte de novo**. Siga para o Passo 4.
 
 ### Passo 4 — Escolha do Modo de Execução
-Ao final das perguntas (ou logo após as respostas do usuário), ofereça claramente como entregar o trabalho:
+
+**Modo "Executar até o fim".** Se o usuário disser algo como *"não pare até terminar"*, *"pode fazer tudo"* ou já tiver escolhido o modo, **não ofereça a escolha abaixo**. Faça assim:
+1. Divida o trabalho em fases curtas (ex.: base → núcleo → tela → testes → documentação).
+2. Ao fim de cada fase: rode a verificação aplicável da [matriz](../project-workflow/references/validation.md) e faça um commit de checkpoint, se o projeto usa git e o commit está autorizado.
+3. Decida sozinho o que for razoável e registre a decisão. Pare só por bloqueio real: credencial, ação destrutiva ou externa sem autorização, ou ambiguidade que mude o resultado.
+4. No fim, entregue um relatório único: o que foi feito, como testar, decisões tomadas e o que ficou pendente.
+
+Nos demais casos, ao final das perguntas (ou logo após as respostas do usuário), ofereça claramente como entregar o trabalho:
 
 1. **Executar direto aqui (Implementação Local):** o próprio agente cria ou edita os arquivos no projeto atual, executa os testes/validações aplicáveis da [matriz de validação](../project-workflow/references/validation.md) e entrega pronto.
 2. **Gerar Prompt(s) Pronto(s) sob Medida (Orquestração Multi-Agente):** o agente monta os prompts completos e personalizados em blocos Markdown prontos para copiar e colar (por exemplo: **Prompt 1** para geração/ajuste de mídias e vídeos no ChatGPT/Codex + **Prompt 2** para implementação ou refatoração no Claude Code).

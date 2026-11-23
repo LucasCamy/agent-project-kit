@@ -17,6 +17,8 @@ Selecione linhas pertinentes ao escopo, critérios de aceitação e instruções
 | Documentação | Compatibilidade com código, comandos e caminhos existentes; diferenciar instruções conferidas de execução real |
 | ADR | Convenção local, identificador único, status sustentado por evidência, contexto/decisão/alternativas/consequências; links de substituição coerentes; distinguir aceitação de implementação |
 | Publicação de site com dados, vendas ou imagens de pessoas | Inventário de dados, rastreadores, embeds e licenças; páginas legais marcadas como minuta; nenhum dado da empresa inventado; checklist de feito, pendente e revisão de advogado |
+| App desktop (Electron/Tauri) | E2E abrindo o app real (Playwright `_electron` ou equivalente) com prints; ao menos uma vez contra o executável empacotado; preload expõe só a allowlist; navegação e `window.open` bloqueados; chaves cifradas e fora de logs. Ver [desktop-app.md](../../frontend-figma-playwright/references/desktop-app.md) |
+| Integração com LLM | Testes determinísticos com modo de IA falsa; parsing por saída estruturada; ações com efeito pedem confirmação; prompt injection por conteúdo de arquivo/página tratada; chamada real só com chave e consentimento, ou registrada como não testada. Ver [llm-app.md](llm-app.md) |
 | CI/infra | Sintaxe/configuração, permissões e impacto operacional; conferir sem provocar deploy ou publicação não autorizados |
 
 Verifique critérios funcionais além de build, lint e types. Um comando verde não prova autorização correta, semântica de negócio ou equivalência visual. Quando a validação falhar, investigue a causa; repita ou amplie verificações só quando houver correção, falha ou dúvida relevante.
