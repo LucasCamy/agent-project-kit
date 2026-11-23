@@ -57,7 +57,23 @@ Confira o fluxo, teclado, responsividade e estados com Playwright,
 capture screenshots e compare a implementação com o design.
 ```
 
-Figma é requisito de interface deste kit. Se faltar arquivo/destino ou acesso, o agente precisa dessa informação ou de autorização para alternativa. Para back-end ou documentação sem mudança visual, não se exige frame. O [módulo de front-end](skills/frontend-figma-playwright/SKILL.md) descreve o procedimento.
+Figma é requisito de interface deste kit por padrão. Se faltar arquivo/destino ou acesso, o agente precisa dessa informação ou de autorização para alternativa. Para back-end ou documentação sem mudança visual, não se exige frame. Um projeto pode dispensar o Figma declarando isso no próprio AGENTS.md (por exemplo, quando a validação visual é feita por prints do e2e). O [módulo de front-end](skills/frontend-figma-playwright/SKILL.md) descreve o procedimento e o opt-out.
+
+### App desktop e apps com IA
+
+```text
+Crie/ajuste [app desktop] em [Electron/Tauri].
+Janela: [sem moldura, sempre por cima, bandeja, atalho global].
+Se chamar um LLM: chave só no processo principal, saída estruturada,
+ações em arquivos com confirmação e modo de IA falsa para os testes.
+Valide com e2e abrindo o app real e confira o instalador gerado.
+```
+
+A [referência de app desktop](skills/frontend-figma-playwright/references/desktop-app.md) cobre janela, segurança do IPC, segredos, e2e com Playwright e empacotamento. A [referência de apps com LLM](skills/project-workflow/references/llm-app.md) cobre chaves, respostas estruturadas, ferramentas com confirmação, prompt injection e testes sem custo. O kit não fixa nomes de modelos nem preços: o agente confere a documentação atual do provedor.
+
+### Perfil de comunicação e "executar até o fim"
+
+Se você prefere respostas curtas, perguntas de escolha múltipla e um passo por vez (por exemplo, por TDAH ou dislexia), peça para incluir o [Perfil de comunicação](skills/project-workflow/references/common.md#perfil-de-comunicação) no AGENTS.md do projeto. Se disser *"não pare até terminar"*, o [consultor](skills/interactive-consultant/SKILL.md) pula a escolha de modo, trabalha em fases com teste e commit de checkpoint e entrega um relatório no fim.
 
 ### Back-end .NET e banco
 
@@ -70,7 +86,7 @@ a aplicação em ambiente compartilhado não faz parte deste pedido.
 Atualize o contrato/documentação pertinente e valide o comportamento.
 ```
 
-O [módulo .NET](skills/backend-dotnet/SKILL.md) e o de [persistência](skills/database-persistence/SKILL.md) preservam a organização real da solução. Criar migration, revisar SQL e aplicar são operações diferentes.
+O [módulo .NET](skills/backend-dotnet/SKILL.md) e o de [persistência](skills/database-persistence/SKILL.md) preservam a organização real da solução. O kit só tem módulo dedicado para .NET; para Node, Python e outras stacks, o comando [/backend](commands/backend.md) traz as regras gerais. Criar migration, revisar SQL e aplicar são operações diferentes.
 
 ### Documentação e ADRs
 

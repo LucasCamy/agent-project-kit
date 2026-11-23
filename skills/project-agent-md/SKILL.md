@@ -15,7 +15,9 @@ Projeto existente: extraia arquitetura e convenções do código e configuraçã
 
 ## Conteúdo útil
 
-Escreva uma versão curta com seções aplicáveis: propósito e stack; organização; comandos; convenções; validação; segurança/operação; mapa de documentação. Inclua domínios, tracker, Figma e integrações somente quando o projeto ou o usuário os estabelecer. Para UI, mantenha a preferência deste pacote de estruturar no Figma e conferir com Playwright; não invente arquivo ou node Figma.
+Escreva uma versão curta com seções aplicáveis: propósito e stack; organização; comandos; convenções; validação; segurança/operação; mapa de documentação. Inclua domínios, tracker, Figma e integrações somente quando o projeto ou o usuário os estabelecer. Para UI, mantenha a preferência deste pacote de estruturar no Figma e conferir com Playwright; não invente arquivo ou node Figma. Se o usuário dispensar o Figma no projeto, registre o [opt-out](../frontend-figma-playwright/SKILL.md) numa seção "Figma" com a forma de validação visual adotada.
+
+Se o usuário informar como prefere receber respostas (por exemplo, TDAH ou dislexia), inclua a seção [Perfil de comunicação](../project-workflow/references/common.md#perfil-de-comunicação) com o que ele pediu. Não deduza o perfil sozinho.
 
 Comandos encontrados em manifests/CI podem ser documentados como encontrados, ainda não executados. Use verificado por execução somente com evidência real. Não é necessário executar toda a suíte só para escrever AGENTS.md. Caminhos devem ser relativos ao projeto; referências devem funcionar em outra máquina, sem depender de F:/Skills.
 

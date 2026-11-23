@@ -1,11 +1,13 @@
 ---
 name: frontend-figma-playwright
-description: Criar ou alterar interfaces web com estruturação prévia no Figma MCP, implementação coerente com o projeto e validação em navegador com Playwright e screenshots.
+description: Criar ou alterar interfaces web e de apps desktop com estruturação prévia no Figma MCP (salvo opt-out do projeto), implementação coerente com o projeto e validação com Playwright e screenshots.
 ---
 
 # Front-end com Figma e Playwright
 
 Leia [as regras comuns](../project-workflow/references/common.md). A preferência explícita do usuário é estruturar toda mudança de UI no Figma antes do código, incluindo texto visível, componente, correção visual, estado e responsividade. Trabalho sem efeito na UI não exige frame.
+
+**Opt-out por projeto.** Essa preferência é o padrão. Um projeto pode dispensar o Figma declarando no seu AGENTS.md, por exemplo: *"Este projeto não usa Figma; a validação visual é feita por screenshots do teste e2e"*. Com essa declaração, pule os passos de Figma (3 e a comparação do 6) e mantenha o resto: implementação, Playwright, screenshots e estados. Só o usuário cria ou remove o opt-out; o agente não o declara por conta própria.
 
 ## Desenhar e implementar
 
@@ -27,5 +29,7 @@ Use [a matriz](../project-workflow/references/validation.md) para fechar evidên
 Para página contada pelo scroll (seções fixadas, scrub, scroll horizontal, sequência de quadros, scroll suave), leia [a referência de animação ligada ao scroll](references/scroll-motion.md). Ela orienta a escolha entre Motion e GSAP, a versão para movimento reduzido e a validação com as duas preferências. Quando a tarefa separar a geração de imagens, vídeos, quadros de `<canvas>` e `MEDIA_MANIFEST.json` da etapa de implementação do código, siga [o pipeline passo a passo de mídia e scrollytelling](pipeline-midia/README.md).
 
 Para travamentos na rolagem, em modais ou gavetas, ou animações que disparam antes de a pessoa chegar na seção, siga [a referência de fluidez e revelação por etapas](references/fluidez-e-revelacao.md): medir com os scripts do [kit](references/fluidez-kit/) antes e depois, corrigir pela causa medida e revelar por posição, só no compositor.
+
+Para app desktop (Electron ou Tauri: janela sem moldura, sempre por cima, bandeja, IPC, instalador), leia [a referência de app desktop](references/desktop-app.md). Para telas que chamam um LLM, leia também [a referência de apps com LLM](../project-workflow/references/llm-app.md).
 
 Para uma ilustração isométrica que explique um conceito do produto, avalie [Anatomy como opção especializada](references/anatomy.md). Escolha pelo valor explicativo e pelo escopo; sua adoção preserva o fluxo Figma e a conferência no navegador.

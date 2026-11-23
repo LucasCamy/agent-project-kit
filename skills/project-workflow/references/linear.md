@@ -2,6 +2,21 @@
 
 Use esta referência quando o usuário ou o projeto adotar Linear. O modelo foi generalizado do AGENTS.md fornecido pelo usuário: Linear como fonte de gestão e índice operacional; repositório como referência detalhada da implementação. Não copie nomes de projetos, caminhos nem regras de domínio de outro repositório.
 
+## Dois usos diferentes: gestão do repositório × integração no produto
+
+Antes de agir, descubra qual dos dois o projeto usa. Eles não se misturam.
+
+| | Linear como gestão do desenvolvimento | Linear como integração do produto |
+|---|---|---|
+| Quem usa | O agente e o time, para tocar este repositório | O app que está sendo construído, para os usuários dele |
+| Onde fica a regra | Seção "Gestão do projeto" do AGENTS.md (bloco abaixo) | Código do app (ex.: cliente GraphQL) e sua documentação |
+| Credencial | Acesso do agente/MCP, autorizado pelo usuário | Chave do usuário final, guardada pelo app (cifrada), nunca no repositório |
+| Testes | Não se aplica | Cliente com servidor falso ou modo de teste; envio real só com consentimento |
+
+Se o app integra Linear, isso **não** cria um projeto Linear para o desenvolvimento do repositório. Não crie time, projeto ou issues de gestão sem pedido. Declare no AGENTS.md qual uso vale, por exemplo: *"O Linear é usado pelo app. Não há projeto Linear para este repositório."*
+
+O restante desta referência trata do **uso de gestão**. Para a integração no produto, siga as regras de [integração externa](validation.md) e de segredos das [regras comuns](common.md).
+
 ## Configurar o contexto
 
 Descubra time, projeto e issue a partir das instruções do repositório, briefing ou referências confirmadas. Em projeto novo, peça os identificadores que faltarem antes de vincular o repositório a um projeto Linear. Não escolha pelo nome parecido e não crie projetos ou issues automaticamente só para preencher campos.
